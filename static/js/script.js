@@ -574,6 +574,18 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
+function normalizeText(text) {
+    return (text || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 // Carousel functionality
 let currentSlideIndex = 0;
 
@@ -1028,22 +1040,102 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Search functionality
-    const searchBtn = document.querySelector('.search-btn');
-    const searchInput = document.querySelector('.search-bar input');
-    
-    if (searchBtn) {
-        searchBtn.addEventListener('click', () => {
-            const query = searchInput ? searchInput.value.trim() : '';
-            if (query) {
-                alert(`Tìm kiếm: ${query}`);
-            }
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const searchResultsSection = document.getElementById('searchResultsSection');
+    const searchResultsContainer = document.getElementById('searchResults');
+    const searchQueryText = document.getElementById('searchQueryText');
+    const searchResultCount = document.getElementById('searchResultCount');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+    function hideSearchResults() {
+        if (searchResultsSection) {
+            searchResultsSection.style.display = 'none';
+        }
+        if (searchResultsContainer) {
+            searchResultsContainer.innerHTML = '';
+        }
+        if (searchResultCount) {
+            searchResultCount.textContent = '';
+        }
+        if (searchQueryText) {
+            searchQueryText.textContent = '';
+        }
+    }
+
+    function renderSearchResults(query, results) {
+        if (!searchResultsSection || !searchResultsContainer) {
+            return;
+        }
+
+        searchResultsSection.style.display = 'block';
+        if (searchQueryText) {
+            searchQueryText.textContent = query;
+        }
+        if (searchResultCount) {
+            searchResultCount.textContent = results.length > 0
+                ? `${results.length} sản phẩm phù hợp`
+                : 'Không tìm thấy sản phẩm phù hợp';
+        }
+
+        if (results.length === 0) {
+            searchResultsContainer.innerHTML = '<p style="text-align: center; padding: 30px;">Không tìm thấy sản phẩm nào.</p>';
+        } else {
+            searchResultsContainer.innerHTML = results.map(product => createProductCard(product)).join('');
+            searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function performSearch() {
+        if (!searchInput) {
+            return;
+        }
+
+        const query = searchInput.value.trim();
+        if (query.length < 3) {
+            showNotification('Vui lòng nhập ít nhất 3 ký tự để tìm kiếm.');
+            hideSearchResults();
+            return;
+        }
+
+        if (!Array.isArray(products) || products.length === 0) {
+            showNotification('Danh sách sản phẩm chưa sẵn sàng. Vui lòng thử lại sau.');
+            return;
+        }
+
+        const normalizedQuery = normalizeText(query);
+        const results = products.filter(product => {
+            const normalizedName = normalizeText(product.name);
+            const normalizedDesc = normalizeText(product.description);
+            return normalizedName.includes(normalizedQuery) || normalizedDesc.includes(normalizedQuery);
         });
+
+        renderSearchResults(query, results);
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
     }
     
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && searchBtn) {
-                searchBtn.click();
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.trim().length === 0) {
+                hideSearchResults();
+            }
+        });
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            hideSearchResults();
+            if (searchInput) {
+                searchInput.value = '';
             }
         });
     }

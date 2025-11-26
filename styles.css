@@ -159,18 +159,20 @@ body {
 .navbar {
     background-color: #2d5016;
     padding: 10px 0;
+    font-size: 60px;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 30px;
+    font-size: 60px;
 }
 
 .nav-menu li a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     transition: opacity 0.3s;
 }

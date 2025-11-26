@@ -1057,3 +1057,43 @@ function showLienHe() {
     document.getElementById('lienHePage').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ======= TÌM KIẾM SẢN PHẨM THEO TÊN =======
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+// Khi người dùng gõ
+searchInput.addEventListener("keyup", () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    if (keyword.length < 3) {
+        searchResults.style.display = "none";
+        return;
+    }
+
+    // Lọc sản phẩm theo tên
+    const results = products.filter(p =>
+        p.name.toLowerCase().includes(keyword)
+    );
+
+    // Hiển thị kết quả
+    if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => `
+            <div onclick="viewProductDetail(${item.id})">
+                <strong>${item.name}</strong> — ${formatCurrency(item.price)}
+            </div>
+        `).join("");
+
+        searchResults.style.display = "block";
+    } else {
+        searchResults.innerHTML = `<div>Không tìm thấy sản phẩm</div>`;
+        searchResults.style.display = "block";
+    }
+});
+
+// Ẩn box khi click bên ngoài
+document.addEventListener("click", function(e) {
+    if (!searchInput.contains(e.target)) {
+        searchResults.style.display = "none";
+    }
+});

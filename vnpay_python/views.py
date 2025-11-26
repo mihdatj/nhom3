@@ -20,6 +20,8 @@ from vnpay_python.forms import PaymentForm
 from vnpay_python.vnpay import vnpay
 
 
+
+
 def index(request):
     return render(request, "index.html", {"title": "Nhóm 3 - Trang Chủ"})
 

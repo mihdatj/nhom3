@@ -18,6 +18,7 @@ from django.contrib import admin
 
 import vnpay_python.views
 
+
 urlpatterns = [
     url(r'^$', vnpay_python.views.index, name='index'),
     url(r'^cart$', vnpay_python.views.cart, name='cart'),

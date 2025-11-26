@@ -133,13 +133,13 @@
             <div class="container">
                 <div class="header-main-content">
                     <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
-                        <div class="logo">
+                    <div class="logo">
                             <h1>Nhóm 3</h1>
                         </div>
                     </a>
                     <div class="search-bar">
-                        <input type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
-                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                        <input id="searchInput" type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
+                        <button id="searchBtn" class="search-btn"><i class="fas fa-search"></i></button>
                     </div>
                     <div class="header-actions">
                         <a href="{% url 'cart' %}" style="text-decoration: none; color: inherit;">
@@ -219,6 +219,18 @@
                         <div class="category-icon"><i class="fas fa-pepper-hot"></i></div>
                         <span>Rau Gia Vị</span>
                     </div>
+                </div>
+            </section>
+
+            <!-- Search Results -->
+            <section class="products-section" id="searchResultsSection" style="display: none;">
+                <div class="section-header">
+                    <h2>Kết quả tìm kiếm cho "<span id="searchQueryText"></span>"</h2>
+                    <button class="view-all" id="clearSearchBtn" type="button">Đóng kết quả</button>
+                </div>
+                <p id="searchResultCount" style="margin-bottom: 15px;"></p>
+                <div class="products-grid" id="searchResults">
+                    <!-- Search results will appear here -->
                 </div>
             </section>
 
