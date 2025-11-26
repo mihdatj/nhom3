@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - Nhóm 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span>Kênh Người Bán</span>
+                        <span>Tải Ứng Dụng</span>
+                        <span>Kết Nối</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-bell"></i> Thông Báo</span>
+                        <span><i class="fas fa-question-circle"></i> Hỗ Trợ</span>
+                        <span><i class="fas fa-globe"></i> Tiếng Việt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <div class="logo" onclick="window.location.href='index.html'">
+                        <h1>Nhóm 3</h1>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm, thương hiệu, và tên shop">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#">Sản Phẩm Mới</a></li>
+                    <li><a href="#">Khuyến Mãi</a></li>
+                    <li><a href="#">Hàng Quốc Tế</a></li>
+                    <li><a href="#">Nhóm 3 Mall</a></li>
+                    <li><a href="#">Voucher</a></li>
+                    <li><a href="#">Nạp Thẻ & Dịch Vụ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Trang Chủ</a>
+                <span>/</span>
+                <span>Giỏ Hàng</span>
+            </div>
+
+            <!-- Cart Header -->
+            <div class="cart-header">
+                <div class="cart-header-row">
+                    <div class="cart-checkbox-col">
+                        <label class="select-all-checkbox">
+                            <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                            <span>Sản Phẩm</span>
+                        </label>
+                    </div>
+                    <div class="cart-price-col">Đơn Giá</div>
+                    <div class="cart-quantity-col">Số Lượng</div>
+                    <div class="cart-total-col">Số Tiền</div>
+                    <div class="cart-action-col">Thao Tác</div>
+                </div>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-items-container" id="cartItemsContainer">
+                <!-- Cart items will be loaded by JavaScript -->
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="cart-footer">
+                <div class="cart-footer-left">
+                    <label class="select-all-checkbox">
+                        <input type="checkbox" id="selectAllFooter" onchange="toggleSelectAll()">
+                        <span id="selectAllText">Chọn Tất Cả (<span id="totalItems">0</span>)</span>
+                    </label>
+                    <button class="delete-btn" onclick="deleteSelected()">Xóa</button>
+                </div>
+                <div class="cart-footer-center">
+                    <div class="voucher-section">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span>Nhóm 3 Voucher</span>
+                        <a href="#" class="voucher-link">Chọn hoặc nhập mã</a>
+                    </div>
+                    <div class="coin-section">
+                        <i class="fas fa-coins"></i>
+                        <span>Nhóm 3 Xu</span>
+                        <span class="coin-amount" id="coinAmount">Bạn chưa chọn sản phẩm</span>
+                        <span class="coin-value" id="coinValue">-0₫</span>
+                    </div>
+                </div>
+                <div class="cart-footer-right">
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Tổng cộng (<span id="selectedCount">0</span> sản phẩm):</span>
+                            <span class="total-price" id="cartTotalPrice">0₫</span>
+                        </div>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">Mua Hàng</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CHĂM SÓC KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Trung Tâm Trợ Giúp</a></li>
+                        <li><a href="#">Nhóm 3 Blog</a></li>
+                        <li><a href="#">Nhóm 3 Mail</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#">Hướng Dẫn Bán Hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ SHOPEE</h3>
+                    <ul>
+                        <li><a href="#">Giới Thiệu Về Nhóm 3</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                        <li><a href="#">Điều Khoản Nhóm 3</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                        <li><a href="#">Chính Hãng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>THANH TOÁN</h3>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>THEO DÕI CHÚNG TÔI</h3>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhóm 3. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>
+

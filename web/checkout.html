@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - Nhóm 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span><i class="fas fa-truck"></i> Freeship nội thành Hà Nội & Hồ Chí Minh đơn hàng 299.000₫</span>
+                        <span><i class="fas fa-shipping-fast"></i> FreeShip toàn quốc đơn hàng 399K</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-phone"></i> Hotline: 123456</span>
+                        <span onclick="window.location.href='cart.html'" style="cursor: pointer;"><i class="fas fa-shopping-cart"></i> Giỏ hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <div class="logo" onclick="window.location.href='index.html'">
+                        <h1>Nhóm 3</h1>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <div class="cart-icon" onclick="window.location.href='cart.html'">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#" onclick="showRauCuQua(); return false;">Rau củ quả</a></li>
+                    <li><a href="#" onclick="showLienHe(); return false;">Liên Hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Trang Chủ</a>
+                <span>/</span>
+                <a href="cart.html">Giỏ Hàng</a>
+                <span>/</span>
+                <span>Thanh Toán</span>
+            </div>
+
+            <div class="checkout-container">
+                <!-- Left Column: Delivery Information -->
+                <div class="checkout-left">
+                    <div class="checkout-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Địa Chỉ Nhận Hàng
+                        </h2>
+                        <form id="deliveryForm" class="delivery-form">
+                            <div class="form-group">
+                                <label>Họ và tên *</label>
+                                <input type="text" id="fullName" required placeholder="Nhập họ và tên">
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại *</label>
+                                <input type="tel" id="phone" required 
+                                       pattern="[0-9]{10}" 
+                                       minlength="10" 
+                                       maxlength="10"
+                                       placeholder="Nhập số điện thoại (10 số)"
+                                       oninput="validatePhone(this)">
+                                <small class="error-message" id="phoneError" style="color: red; display: none;">
+                                    Số điện thoại phải có đúng 10 chữ số
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>Tỉnh/Thành phố *</label>
+                                <select id="province" required>
+                                    <option value="">Chọn Tỉnh/Thành phố</option>
+                                    <option value="hanoi">Hà Nội</option>
+                                    <option value="hochiminh">Hồ Chí Minh</option>
+                                    <option value="haiphong">Hải Phòng</option>
+                                    <option value="hue">Huế</option>
+                                    <option value="danang">Đà Nẵng</option>
+                                    <option value="cantho">Cần Thơ</option>
+                                    <option value="laichau">Lai Châu</option>
+                                    <option value="dienbien">Điện Biên</option>
+                                    <option value="sonla">Sơn La</option>
+                                    <option value="langson">Lạng Sơn</option>
+                                    <option value="quangninh">Quảng Ninh</option>
+                                    <option value="thanhhoa">Thanh Hóa</option>
+                                    <option value="nghean">Nghệ An</option>
+                                    <option value="hatinh">Hà Tĩnh</option>
+                                    <option value="caobang">Cao Bằng</option>
+                                    <option value="tuyenquang">Tuyên Quang</option>
+                                    <option value="laocai">Lào Cai</option>
+                                    <option value="thainguyen">Thái Nguyên</option>
+                                    <option value="phutho">Phú Thọ</option>
+                                    <option value="bacninh">Bắc Ninh</option>
+                                    <option value="hungyen">Hưng Yên</option>
+                                    <option value="ninhbinh">Ninh Bình</option>
+                                    <option value="quangtri">Quảng Trị</option>
+                                    <option value="quangngai">Quảng Ngãi</option>
+                                    <option value="gialai">Gia Lai</option>
+                                    <option value="khanhhoa">Khánh Hòa</option>
+                                    <option value="lamdong">Lâm Đồng</option>
+                                    <option value="daklak">Đắk Lắk</option>
+                                    <option value="dongnai">Đồng Nai</option>
+                                    <option value="tayninh">Tây Ninh</option>
+                                    <option value="vinhlong">Vĩnh Long</option>
+                                    <option value="dongthap">Đồng Tháp</option>
+                                    <option value="camau">Cà Mau</option>
+                                    <option value="angiang">An Giang</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quận/Huyện *</label>
+                                <input type="text" id="district" required placeholder="Nhập quận/huyện">
+                            </div>
+                            <div class="form-group">
+                                <label>Phường/Xã *</label>
+                                <input type="text" id="ward" required placeholder="Nhập phường/xã">
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ chi tiết *</label>
+                                <textarea id="address" required rows="3" placeholder="Nhập số nhà, tên đường..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Ghi chú đơn hàng</label>
+                                <textarea id="notes" rows="3" placeholder="Ghi chú cho người bán (tùy chọn)"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="checkout-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-credit-card"></i>
+                            Phương Thức Thanh Toán
+                        </h2>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <span class="payment-label">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Thanh toán khi nhận hàng (COD)
+                                </span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="bank">
+                                <span class="payment-label">
+                                    <i class="fas fa-university"></i>
+                                    Chuyển khoản ngân hàng
+                                </span>
+                            </label>
+                            <div id="bankSelection" class="bank-selection" style="display: none;">
+                                <div class="bank-selection-header">
+                                    <h4>Thẻ nội địa và tài khoản ngân hàng</h4>
+                                </div>
+                                <div class="bank-search-container">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" id="bankSearchInput" placeholder="Tìm kiếm..." oninput="filterBanks()">
+                                </div>
+                                <div class="bank-grid-container">
+                                    <div id="bankGrid" class="bank-grid">
+                                        <!-- Banks will be loaded by JavaScript -->
+                                    </div>
+                                </div>
+                                <input type="hidden" id="bankCode" value="">
+                            </div>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="momo">
+                                <span class="payment-label">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Ví MoMo
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Order Summary -->
+                <div class="checkout-right">
+                    <div class="order-summary">
+                        <h2 class="section-title">Đơn Hàng</h2>
+                        <div id="checkoutItems" class="checkout-items">
+                            <!-- Items will be loaded by JavaScript -->
+                        </div>
+                        <div class="order-summary-footer">
+                            <div class="summary-row">
+                                <span>Tạm tính:</span>
+                                <span id="subtotal">0 ₫</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Phí vận chuyển:</span>
+                                <span id="shippingFee">0 ₫</span>
+                            </div>
+                            <div class="summary-row discount-row">
+                                <span>Giảm giá:</span>
+                                <span id="discount">-0 ₫</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Tổng cộng:</span>
+                                <span id="totalAmount">0 ₫</span>
+                            </div>
+                        </div>
+                        <button class="place-order-btn" onclick="placeOrder()">
+                            <i class="fas fa-lock"></i>
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Các câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn đặt hàng và thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ CHÚNG TÔI</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Danh sách cửa hàng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>TỔNG ĐÀI CHĂM SÓC KHÁCH HÀNG</h3>
+                    <div class="contact-info">
+                        <p><strong>Hotline:</strong> <a href="tel:123456">123456</a></p>
+                        <p><strong>Phòng CSKH:</strong> 123456</p>
+                        <p><strong>Phòng mua hàng:</strong> 123456</p>
+                        <p><strong>Phòng kế toán:</strong> 123456</p>
+                        <p><strong>Phòng HCNS:</strong> 123456</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ĐỊA CHỈ CÁC TRỤ SỞ</h3>
+                    <div class="address-info">
+                        <p><strong>Trụ Sở Chính Hà Nội:</strong><br>
+                        Số 11 Kim Đồng | Phường Giáp Bát | Quận Hoàng Mai | Hà Nội</p>
+                        <p><strong>Chi Nhánh TP.HCM:</strong><br>
+                        Số 02/B Khu Phố 3 | Đường Trung Mỹ Tây 13 | Quận 12 | TP.HCM</p>
+                        <p><strong>Xưởng Chế Biến:</strong><br>
+                        Vạn Ty | Thái Bảo | Gia Bình | Bắc Ninh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
+

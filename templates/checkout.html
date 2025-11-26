@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - Nhóm 3</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span><i class="fas fa-truck"></i> Freeship nội thành Hà Nội & Hồ Chí Minh đơn hàng 299.000₫</span>
+                        <span><i class="fas fa-shipping-fast"></i> FreeShip toàn quốc đơn hàng 399K</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-phone"></i> Hotline: 123456</span>
+                        <a href="{% url 'cart' %}" style="cursor: pointer; text-decoration: none; color: inherit;"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <a href="{% url 'index' %}" style="cursor: pointer; text-decoration: none; color: inherit;">
+                        <div class="logo">
+                            <h1>Nhóm 3</h1>
+                        </div>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <a href="{% url 'cart' %}" style="cursor: pointer; text-decoration: none; color: inherit;">
+                            <div class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </div>
+                        </a>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-basket"></i> Rau củ quả</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> Liên Hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="{% url 'index' %}">Trang Chủ</a>
+                <span>/</span>
+                <a href="{% url 'cart' %}">Giỏ Hàng</a>
+                <span>/</span>
+                <span>Thanh Toán</span>
+            </div>
+
+            <form id="checkoutForm" action="{% url 'payment' %}" method="post">
+                {% csrf_token %}
+                <div class="checkout-container">
+                    <!-- Left Column: Delivery Information -->
+                    <div class="checkout-left">
+                        <div class="checkout-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Địa Chỉ Nhận Hàng
+                            </h2>
+                            <div class="delivery-form">
+                                <div class="form-group">
+                                    <label>Họ và tên *</label>
+                                    <input type="text" id="fullName" name="full_name" required placeholder="Nhập họ và tên">
+                                </div>
+                                <div class="form-group">
+                                    <label>Số điện thoại *</label>
+                                    <input type="tel" id="phone" name="phone" required 
+                                           pattern="[0-9]{10}" 
+                                           minlength="10" 
+                                           maxlength="10"
+                                           placeholder="Nhập số điện thoại (10 số)"
+                                           oninput="validatePhone(this)">
+                                    <small class="error-message" id="phoneError" style="color: red; display: none;">
+                                        Số điện thoại phải có đúng 10 chữ số
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email *</label>
+                                    <input type="email" id="email" name="email" required 
+                                           placeholder="Nhập email để nhận thông báo đơn hàng">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tỉnh/Thành phố *</label>
+                                    <select id="province" name="province" required>
+                                        <option value="">Chọn Tỉnh/Thành phố</option>
+                                        <option value="hanoi">Hà Nội</option>
+                                        <option value="hochiminh">Hồ Chí Minh</option>
+                                        <option value="haiphong">Hải Phòng</option>
+                                        <option value="hue">Huế</option>
+                                        <option value="danang">Đà Nẵng</option>
+                                        <option value="cantho">Cần Thơ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quận/Huyện *</label>
+                                    <input type="text" id="district" name="district" required placeholder="Nhập quận/huyện">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phường/Xã *</label>
+                                    <input type="text" id="ward" name="ward" required placeholder="Nhập phường/xã">
+                                </div>
+                                <div class="form-group">
+                                    <label>Địa chỉ chi tiết *</label>
+                                    <textarea id="address" name="address_detail" required rows="3" placeholder="Nhập số nhà, tên đường..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ghi chú đơn hàng</label>
+                                    <textarea id="notes" name="order_notes" rows="3" placeholder="Ghi chú cho người bán (tùy chọn)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-credit-card"></i>
+                                Phương Thức Thanh Toán
+                            </h2>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="cod">
+                                    <span class="payment-label">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        Thanh toán khi nhận hàng (COD)
+                                    </span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="bank" checked>
+                                    <span class="payment-label">
+                                        <i class="fas fa-university"></i>
+                                        Chuyển khoản ngân hàng
+                                    </span>
+                                </label>
+                                <div id="bankSelection" class="bank-selection">
+                                    <div class="bank-selection-header">
+                                        <h4>Thẻ nội địa và tài khoản ngân hàng</h4>
+                                    </div>
+                                    <div class="bank-search-container">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="bankSearchInput" placeholder="Tìm kiếm..." oninput="filterBanks()">
+                                    </div>
+                                    <div class="bank-grid-container">
+                                        <div id="bankGrid" class="bank-grid">
+                                            <!-- Banks will be loaded by JavaScript -->
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="bankCode" name="bank_code" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Order Summary -->
+                    <div class="checkout-right">
+                        <div class="order-summary">
+                            <h2 class="section-title">Đơn Hàng</h2>
+                            <div id="checkoutItems" class="checkout-items">
+                                <!-- Items will be loaded by JavaScript -->
+                                <p style="text-align: center; padding: 20px; color: #999;">Đang tải sản phẩm...</p>
+                            </div>
+                            <div class="order-summary-footer">
+                                <div class="summary-row">
+                                    <span>Tạm tính:</span>
+                                    <span id="subtotal">0 ₫</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Phí vận chuyển:</span>
+                                    <span id="shippingFee">0 ₫</span>
+                                </div>
+                                <div class="summary-row discount-row">
+                                    <span>Giảm giá:</span>
+                                    <span id="discount">0 ₫</span>
+                                </div>
+                                <div class="summary-row total-row">
+                                    <span>Tổng cộng:</span>
+                                    <span id="totalAmount">0 ₫</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="place-order-btn">
+                                <i class="fas fa-lock"></i>
+                                Đặt Hàng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hidden fields for payment form -->
+                <input type="hidden" name="order_id" id="order_id" value="{% now 'YmdHis' %}">
+                <input type="hidden" name="order_type" value="other">
+                <input type="hidden" name="amount" id="amount" value="0">
+                <input type="hidden" name="order_desc" id="order_desc" value="">
+                <input type="hidden" name="language" value="vn">
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Các câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn đặt hàng và thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ CHÚNG TÔI</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Danh sách cửa hàng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>TỔNG ĐÀI CHĂM SÓC KHÁCH HÀNG</h3>
+                    <div class="contact-info">
+                        <p><strong>Hotline:</strong> <a href="tel:123456">123456</a></p>
+                        <p><strong>Phòng CSKH:</strong> 123456</p>
+                        <p><strong>Phòng mua hàng:</strong> 123456</p>
+                        <p><strong>Phòng kế toán:</strong> 123456</p>
+                        <p><strong>Phòng HCNS:</strong> 123456</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ĐỊA CHỈ CÁC TRỤ SỞ</h3>
+                    <div class="address-info">
+                        <p><strong>Trụ Sở Chính Hà Nội:</strong><br>
+                        Số 11 Kim Đồng | Phường Giáp Bát | Quận Hoàng Mai | Hà Nội</p>
+                        <p><strong>Chi Nhánh TP.HCM:</strong><br>
+                        Số 02/B Khu Phố 3 | Đường Trung Mỹ Tây 13 | Quận 12 | TP.HCM</p>
+                        <p><strong>Xưởng Chế Biến:</strong><br>
+                        Vạn Ty | Thái Bảo | Gia Bình | Bắc Ninh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
+    <script>
+        // Validate phone number
+        function validatePhone(input) {
+            const phone = input.value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phoneError');
+            input.value = phone;
+            
+            if (phone.length > 0 && phone.length !== 10) {
+                phoneError.style.display = 'block';
+                input.setCustomValidity('Số điện thoại phải có đúng 10 chữ số');
+            } else {
+                phoneError.style.display = 'none';
+                input.setCustomValidity('');
+            }
+        }
+
+        // Form submission handler
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            
+            // QUAN TRỌNG: Đảm bảo giỏ hàng được giữ lại trước khi submit
+            // Lấy giỏ hàng hiện tại và lưu lại
+            let currentCart = [];
+            if (typeof getCart === 'function') {
+                currentCart = getCart();
+            } else {
+                try {
+                    const raw = localStorage.getItem('cart');
+                    currentCart = raw ? JSON.parse(raw) : [];
+                } catch (error) {
+                    console.error('Error reading cart:', error);
+                    currentCart = [];
+                }
+            }
+            
+            // Đảm bảo giỏ hàng được lưu lại
+            if (currentCart && currentCart.length > 0) {
+                localStorage.setItem('cart', JSON.stringify(currentCart));
+                localStorage.setItem('checkoutItems', JSON.stringify(currentCart));
+                console.log('💾 Cart preserved before payment submission');
+            }
+            
+            // Build order description
+            const fullName = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const province = document.getElementById('province').options[document.getElementById('province').selectedIndex].text;
+            const district = document.getElementById('district').value;
+            const ward = document.getElementById('ward').value;
+            const address = document.getElementById('address').value;
+            const notes = document.getElementById('notes').value;
+            
+            let orderDesc = `Thanh toán đơn hàng - ${fullName} - ${phone} - ${address}, ${ward}, ${district}, ${province}`;
+            if (notes) {
+                orderDesc += ` - Ghi chú: ${notes}`;
+            }
+            document.getElementById('order_desc').value = orderDesc;
+            
+            // Get bank code if bank payment selected
+            if (paymentMethod === 'bank') {
+                const bankCode = document.getElementById('bankCode').value;
+                if (!bankCode) {
+                    e.preventDefault();
+                    alert('Vui lòng chọn ngân hàng để tiếp tục.');
+                    return false;
+                }
+            } else {
+                // For COD, clear bank code
+                document.getElementById('bankCode').value = '';
+            }
+            
+            // Get total amount
+            const totalText = document.getElementById('totalAmount').textContent;
+            const totalAmount = parseInt(totalText.replace(/[^\d]/g, ''));
+            document.getElementById('amount').value = totalAmount;
+            
+            console.log('✅ Form submitted, cart preserved');
+        });
+    </script>
+</body>
+</html>

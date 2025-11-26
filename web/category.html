@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm - Nhóm 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span>Kênh Người Bán</span>
+                        <span>Tải Ứng Dụng</span>
+                        <span>Kết Nối</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-bell"></i> Thông Báo</span>
+                        <span><i class="fas fa-question-circle"></i> Hỗ Trợ</span>
+                        <span><i class="fas fa-globe"></i> Tiếng Việt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <div class="logo" onclick="window.location.href='index.html'">
+                        <h1>Nhóm 3</h1>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm, thương hiệu, và tên shop">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#">Sản Phẩm Mới</a></li>
+                    <li><a href="#">Khuyến Mãi</a></li>
+                    <li><a href="#">Hàng Quốc Tế</a></li>
+                    <li><a href="#">Nhóm 3 Mall</a></li>
+                    <li><a href="#">Voucher</a></li>
+                    <li><a href="#">Nạp Thẻ & Dịch Vụ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Trang Chủ</a>
+                <span>/</span>
+                <span id="categoryName">Danh Mục</span>
+            </div>
+
+            <!-- Category Header -->
+            <div class="category-header">
+                <h1 id="categoryTitle">Danh Mục Sản Phẩm</h1>
+                <p id="productCount">0 sản phẩm</p>
+            </div>
+
+            <!-- Main Content with Sidebar -->
+            <div class="category-content-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="category-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Danh Mục</h3>
+                        <ul class="subcategory-list" id="subcategoryList">
+                            <li class="active"><a href="#" onclick="return false;">Tất Cả</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Giá</h3>
+                        <div class="price-filter">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Từ" min="0">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Đến" min="0">
+                            </div>
+                            <button class="apply-price-btn" onclick="applyPriceFilter()">Áp dụng</button>
+                        </div>
+                        <div class="price-presets">
+                            <button class="price-preset-btn" onclick="setPriceRange(0, 100000)">Dưới 100.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(100000, 500000)">100.000₫ - 500.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(500000, 1000000)">500.000₫ - 1.000.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(1000000, 5000000)">1.000.000₫ - 5.000.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(5000000, null)">Trên 5.000.000₫</button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Đánh Giá</h3>
+                        <div class="rating-filter">
+                            <label class="rating-option">
+                                <input type="checkbox" value="5" onchange="applyRatingFilter()">
+                                <span class="stars">★★★★★</span> <span>Từ 5 sao</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="checkbox" value="4" onchange="applyRatingFilter()">
+                                <span class="stars">★★★★☆</span> <span>Từ 4 sao</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="checkbox" value="3" onchange="applyRatingFilter()">
+                                <span class="stars">★★★☆☆</span> <span>Từ 3 sao</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Khuyến Mãi</h3>
+                        <div class="promotion-filter">
+                            <label class="promotion-option">
+                                <input type="checkbox" value="discount" onchange="applyPromotionFilter()">
+                                <span>Có khuyến mãi</span>
+                            </label>
+                            <label class="promotion-option">
+                                <input type="checkbox" value="freeship" onchange="applyPromotionFilter()">
+                                <span>Miễn phí vận chuyển</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Products Area -->
+                <div class="category-main">
+                    <!-- Filters and Sort Bar -->
+                    <div class="filter-section">
+                        <div class="filter-left">
+                            <button class="filter-btn active" data-filter="all">Tất Cả</button>
+                            <button class="filter-btn" data-filter="discount">Có Khuyến Mãi</button>
+                            <button class="filter-btn" data-filter="new">Mới Nhất</button>
+                        </div>
+                        <div class="sort-section">
+                            <label>Sắp xếp theo:</label>
+                            <select id="sortSelect">
+                                <option value="default">Mặc định</option>
+                                <option value="price-asc">Giá: Thấp đến Cao</option>
+                                <option value="price-desc">Giá: Cao đến Thấp</option>
+                                <option value="discount-desc">Giảm giá nhiều nhất</option>
+                                <option value="name-asc">Tên: A-Z</option>
+                                <option value="name-desc">Tên: Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-container">
+                        <div class="products-grid" id="categoryProducts">
+                            <!-- Products will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be generated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CHĂM SÓC KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Trung Tâm Trợ Giúp</a></li>
+                        <li><a href="#">Nhóm 3 Blog</a></li>
+                        <li><a href="#">Nhóm 3 Mail</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#">Hướng Dẫn Bán Hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ SHOPEE</h3>
+                    <ul>
+                        <li><a href="#">Giới Thiệu Về Nhóm 3</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                        <li><a href="#">Điều Khoản Nhóm 3</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                        <li><a href="#">Chính Hãng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>THANH TOÁN</h3>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>THEO DÕI CHÚNG TÔI</h3>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhóm 3. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Giỏ Hàng</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Tổng tiền: <span id="cartTotal">0 ₫</span></p>
+                <button class="checkout-btn">Thanh Toán</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Đảm bảo products đã được load trước khi chạy category.js
+        if (typeof products === 'undefined') {
+            console.warn('⚠️ Products array not loaded yet, waiting...');
+        }
+    </script>
+    <script src="category.js"></script>
+</body>
+</html>
+

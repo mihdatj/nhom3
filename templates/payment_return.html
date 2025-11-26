@@ -1,0 +1,45 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ title }}: {{ result }}</div>
+        <div class="panel-body">
+            <p>order_id:{{ order_id }}</p>
+            <p>amount:{{ amount }}</p>
+            <p>order_desc:{{ order_desc }}</p>
+            <p>vnp_TransactionNo:{{ vnp_TransactionNo }}</p>
+            {% if vnp_ResponseCode == '00' %}
+                <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Thành công</p>
+                <div class="alert alert-success" style="margin-top: 20px;">
+                    <strong>Thanh toán thành công!</strong> Bạn sẽ được chuyển về trang chủ trong <span id="countdown">5</span> giây...
+                </div>
+                <a href="{% url 'index' %}" class="btn btn-primary">Về trang chủ ngay</a>
+            {% else %}
+                <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Lỗi</p>
+            {% endif %}
+            {% if msg %}
+                <p class="alert-warning"> {{ msg }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if vnp_ResponseCode == '00' %}
+    <script>
+        // Countdown và redirect về trang chủ sau 5 giây
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(function() {
+            countdown--;
+            if (countdownElement) {
+                countdownElement.textContent = countdown;
+            }
+            
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = "{% url 'index' %}";
+            }
+        }, 1000);
+    </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm - Nhóm 3</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span><i class="fas fa-truck"></i> Freeship nội thành Hà Nội & Hồ Chí Minh đơn hàng 299.000₫</span>
+                        <span><i class="fas fa-shipping-fast"></i> FreeShip toàn quốc đơn hàng 399K</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-phone"></i> Hotline: 123456</span>
+                        <a href="{% url 'cart' %}" style="cursor: pointer; text-decoration: none; color: inherit;"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                        <div class="logo">
+                            <h1>Nhóm 3</h1>
+                        </div>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <a href="{% url 'cart' %}" style="text-decoration: none; color: inherit;">
+                            <div class="cart-icon" style="cursor: pointer;">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </div>
+                        </a>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#" onclick="showRauCuQua(); return false;">Rau củ quả</a></li>
+                    <li><a href="#" onclick="showLienHe(); return false;">Liên Hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="{% url 'index' %}">Trang Chủ</a>
+                <span>/</span>
+                <span id="categoryName">Danh Mục</span>
+            </div>
+
+            <!-- Category Header -->
+            <div class="category-header">
+                <h1 id="categoryTitle">Danh Mục Sản Phẩm</h1>
+                <p id="productCount">0 sản phẩm</p>
+            </div>
+
+            <!-- Main Content with Sidebar -->
+            <div class="category-content-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="category-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Danh Mục</h3>
+                        <ul class="subcategory-list" id="subcategoryList">
+                            <li class="active"><a href="#" onclick="return false;">Tất Cả</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Giá</h3>
+                        <div class="price-filter">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Từ" min="0">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Đến" min="0">
+                            </div>
+                            <button class="apply-price-btn" onclick="applyPriceFilter()">Áp dụng</button>
+                        </div>
+                        <div class="price-presets">
+                            <button class="price-preset-btn" onclick="setPriceRange(0, 100000)">Dưới 100.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(100000, 500000)">100.000₫ - 500.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(500000, 1000000)">500.000₫ - 1.000.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(1000000, 5000000)">1.000.000₫ - 5.000.000₫</button>
+                            <button class="price-preset-btn" onclick="setPriceRange(5000000, null)">Trên 5.000.000₫</button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Đánh Giá</h3>
+                        <div class="rating-filter">
+                            <label class="rating-option">
+                                <input type="checkbox" value="5" onchange="applyRatingFilter()">
+                                <span class="stars">★★★★★</span> <span>Từ 5 sao</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="checkbox" value="4" onchange="applyRatingFilter()">
+                                <span class="stars">★★★★☆</span> <span>Từ 4 sao</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="checkbox" value="3" onchange="applyRatingFilter()">
+                                <span class="stars">★★★☆☆</span> <span>Từ 3 sao</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Khuyến Mãi</h3>
+                        <div class="promotion-filter">
+                            <label class="promotion-option">
+                                <input type="checkbox" value="discount" onchange="applyPromotionFilter()">
+                                <span>Có khuyến mãi</span>
+                            </label>
+                            <label class="promotion-option">
+                                <input type="checkbox" value="freeship" onchange="applyPromotionFilter()">
+                                <span>Miễn phí vận chuyển</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Products Area -->
+                <div class="category-main">
+                    <!-- Filters and Sort Bar -->
+                    <div class="filter-section">
+                        <div class="filter-left">
+                            <button class="filter-btn active" data-filter="all">Tất Cả</button>
+                            <button class="filter-btn" data-filter="discount">Có Khuyến Mãi</button>
+                            <button class="filter-btn" data-filter="new">Mới Nhất</button>
+                        </div>
+                        <div class="sort-section">
+                            <label>Sắp xếp theo:</label>
+                            <select id="sortSelect">
+                                <option value="default">Mặc định</option>
+                                <option value="price-asc">Giá: Thấp đến Cao</option>
+                                <option value="price-desc">Giá: Cao đến Thấp</option>
+                                <option value="discount-desc">Giảm giá nhiều nhất</option>
+                                <option value="name-asc">Tên: A-Z</option>
+                                <option value="name-desc">Tên: Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-container">
+                        <div class="products-grid" id="categoryProducts">
+                            <!-- Products will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be generated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Các câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn đặt hàng và thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ CHÚNG TÔI</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Danh sách cửa hàng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>TỔNG ĐÀI CHĂM SÓC KHÁCH HÀNG</h3>
+                    <div class="contact-info">
+                        <p><strong>Hotline:</strong> <a href="tel:123456">123456</a></p>
+                        <p><strong>Phòng CSKH:</strong> 123456</p>
+                        <p><strong>Phòng mua hàng:</strong> 123456</p>
+                        <p><strong>Phòng kế toán:</strong> 123456</p>
+                        <p><strong>Phòng HCNS:</strong> 123456</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ĐỊA CHỈ CÁC TRỤ SỞ</h3>
+                    <div class="address-info">
+                        <p><strong>Trụ Sở Chính Hà Nội:</strong><br>
+                        Số 11 Kim Đồng | Phường Giáp Bát | Quận Hoàng Mai | Hà Nội</p>
+                        <p><strong>Chi Nhánh TP.HCM:</strong><br>
+                        Số 02/B Khu Phố 3 | Đường Trung Mỹ Tây 13 | Quận 12 | TP.HCM</p>
+                        <p><strong>Xưởng Chế Biến:</strong><br>
+                        Vạn Ty | Thái Bảo | Gia Bình | Bắc Ninh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Giỏ Hàng</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Tổng tiền: <span id="cartTotal">0 ₫</span></p>
+                <a href="{% url 'cart' %}" class="checkout-btn" style="text-decoration: none; color: white; display: inline-block; padding: 10px 20px; background-color: #2d5016; border-radius: 4px;">Xem Giỏ Hàng</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}?v={% now 'U' %}"></script>
+    <script>
+        // Function to wait for products to load
+        function waitForProducts(callback, maxAttempts = 10, attempt = 0) {
+            if (typeof products !== 'undefined' && Array.isArray(products) && products.length > 0) {
+                console.log('✅ Products loaded successfully:', products.length, 'products');
+                
+                // Update image paths in products data to use static files
+                products.forEach(function(product) {
+                    if (product.image && product.image.startsWith('img/')) {
+                        product.image = '/static/images/img/' + product.image.substring(4);
+                    } else if (product.image && !product.image.startsWith('/static/') && !product.image.startsWith('http')) {
+                        product.image = '/static/images/' + product.image;
+                    }
+                });
+                
+                // Log all categories
+                const allCategories = [...new Set(products.map(p => p.category).filter(c => c))];
+                console.log('📋 Available categories:', allCategories);
+                
+                if (callback) callback();
+            } else if (attempt < maxAttempts) {
+                console.log(`⏳ Waiting for products... (attempt ${attempt + 1}/${maxAttempts})`);
+                setTimeout(function() {
+                    waitForProducts(callback, maxAttempts, attempt + 1);
+                }, 100);
+            } else {
+                console.error('❌ Products failed to load after', maxAttempts, 'attempts');
+                const container = document.getElementById('categoryProducts');
+                if (container) {
+                    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #e74c3c;">Lỗi: Không thể tải danh sách sản phẩm. Vui lòng tải lại trang.</p>';
+                }
+            }
+        }
+        
+        // Wait for products before loading category.js
+        waitForProducts(function() {
+            // Load category.js after products are ready
+            const script = document.createElement('script');
+            script.src = '{% static "js/category.js" %}';
+            script.onload = function() {
+                console.log('✅ category.js loaded');
+            };
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
+

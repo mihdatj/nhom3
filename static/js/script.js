@@ -1,0 +1,1148 @@
+// Sample products data - Nhóm 3
+const products = [
+    // Rau Củ Quả Tươi
+    {
+        id: 1,
+        name: "KHOAI TÂY",
+        price: 27000,
+        originalPrice: 40000,
+        discount: 33,
+        image: "/static/images/img/1.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Khoai tây là củ quen thuộc trong bữa ăn hàng ngày của mọi gia đình. Với hình dáng tròn, vỏ vàng hoặc đỏ, ruột trắng, khoai tây mang đến hương vị thơm ngon đặc trưng. Sản phẩm khoai tây của chúng tôi được trồng theo phương pháp tự nhiên, đảm bảo an toàn vệ sinh thực phẩm, không sử dụng hóa chất độc hại.
+
+Công dụng:
+- Nguồn năng lượng: Khoai tây cung cấp lượng tinh bột dồi dào, là nguồn năng lượng tuyệt vời cho cơ thể.
+- Giàu chất xơ: Hỗ trợ hệ tiêu hóa hoạt động tốt, ngăn ngừa táo bón.
+- Cung cấp vitamin và khoáng chất: Khoai tây chứa nhiều vitamin C, kali, giúp tăng cường hệ miễn dịch, tốt cho tim mạch.
+- Nguyên liệu đa năng: Khoai tây có thể chế biến thành nhiều món ăn khác nhau như khoai tây chiên, khoai tây nghiền, khoai tây nướng, súp khoai tây,...
+
+Cách sử dụng:
+- Khoai tây chiên: Cắt khoai tây thành lát mỏng, chiên giòn.
+- Khoai tây nghiền: Luộc chín khoai tây, nghiền nhuyễn, thêm bơ, sữa và gia vị.
+- Khoai tây nướng: Rửa sạch khoai tây, bọc giấy bạc, nướng trong lò.
+- Súp khoai tây: Luộc chín khoai tây, xay nhuyễn, thêm sữa, bơ và gia vị.`
+    },
+    {
+        id: 4,
+        name: "SU HÀO TƯƠI",
+        price: 55000,
+        originalPrice: 63000,
+        discount: 13,
+        image: "/static/images/img/4.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Hạt Giống Ninseeds
+Tên sp: hạt giống su hào mơ xanh
+KLT hạt/gram: 100 hạt
+Tỷ lệ nảy mầm: 95%
+Thời gian nảy mầm: 7 ngày
+Thời gian thu hoạch: 70 ngày
+Vụ mùa: quanh năm
+Mô tả: giống khoẻ, chịu nhiệt tốt, dễ trồng dễ chăm`
+    },
+    {
+        id: 7,
+        name: "CÀ CHUA TO",
+        price: 18000,
+        originalPrice: 55000,
+        discount: 67,
+        image: "/static/images/img/7.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Cà chua to là loại quả quen thuộc trong bữa ăn hàng ngày, với kích thước lớn hơn so với cà chua thường, vỏ bóng mượt, thịt dày, vị ngọt thanh. Sản phẩm được trồng theo phương pháp tự nhiên, đảm bảo an toàn vệ sinh thực phẩm, không sử dụng hóa chất độc hại. Cà chua to là nguồn cung cấp dồi dào vitamin và khoáng chất, tốt cho sức khỏe.`
+    },
+    {
+        id: 10,
+        name: "SU SU TƯƠI",
+        price: 55000,
+        originalPrice: 55000,
+        discount: 0,
+        image: "/static/images/img/10.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Thông Tin Sản Phẩm:
+- Tên sản phẩm: Su Su Tươi
+- Xuất xứ: Việt Nam
+- Thành phần: 100% Su Su Tươi nguyên chất
+
+Công Dụng:
+- Su Su Tươi là nguồn cung cấp vitamin C, vitamin B9, chất xơ dồi dào, giúp tăng cường hệ miễn dịch, hỗ trợ tiêu hóa và tốt cho tim mạch.
+- Sản phẩm có vị ngọt thanh, mát lạnh, thích hợp cho những ngày hè nóng bức.
+- Su Su Tươi có thể chế biến thành nhiều món ăn ngon như: xào, luộc, nấu canh, salad,...
+- Giúp thanh nhiệt, giải độc cơ thể, hỗ trợ giảm cân hiệu quả.`
+    },
+    {
+        id: 11,
+        name: "SÚP LƠ XANH",
+        price: 21000,
+        originalPrice: 24000,
+        discount: 13,
+        image: "/static/images/img/11.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Thông tin sản phẩm:
+- Tên sản phẩm: Súp Lơ Xanh (Bông Cải Xanh)
+- Xuất xứ: Việt Nam
+- Thành phần: 100% Súp Lơ Xanh tươi nguyên chất
+
+Công dụng:
+- Súp Lơ Xanh là nguồn cung cấp vitamin C, vitamin K, chất xơ dồi dào, giúp tăng cường hệ miễn dịch, hỗ trợ tiêu hóa và tốt cho tim mạch.
+- Sản phẩm có vị ngọt thanh, giòn giòn, thích hợp cho mọi lứa tuổi, đặc biệt là trẻ em.
+- Súp Lơ Xanh có thể chế biến thành nhiều món ăn ngon như: xào, luộc, nấu canh, salad,...
+- Giúp thanh nhiệt, giải độc cơ thể, hỗ trợ giảm cân hiệu quả.
+- Chứa chất chống oxy hóa cao, giúp chống lão hóa.`
+    },
+    {
+        id: 12,
+        name: "BÍ ĐỎ",
+        price: 15000,
+        originalPrice: 20000,
+        discount: 25,
+        image: "/static/images/img/12.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Bí Hạt Đậu Đà Lạt là một giống bí mới được trồng tại Đà Lạt bởi Nông trang an toàn, hiện đại và tiên tiến của Danny Green. Đây là một loại bí đỏ rất đặc biệt, có trọng lượng trái từ 800g đến 1,2kg, với vỏ trắng vàng giống như giống bí Butternut Squash.
+
+Điều đặc biệt của Bí Hạt Đậu Đà Lạt là nó được trồng theo phương pháp hữu cơ, mang lại nhiều ưu điểm nổi bật:
+- Vỏ siêu mỏng và dẻo, ăn như khoai lang Nhật, rất dễ chế biến.
+- Ruột bí dày, nhưng không quá cứng, chín nhanh và mềm dẻo.
+- Hạt bí rất ít, giúp việc ăn và chế biến trở nên dễ dàng hơn.
+- Thịt bí siêu dẻo, ngọt thanh và thơm phức.`
+    },
+    {
+        id: 13,
+        name: "Bí Đao",
+        price: 18000,
+        originalPrice: 22000,
+        discount: 18,
+        image: "/static/images/img/13.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Bí xanh còn có tên gọi khác là bí đao, nó có tên khoa học là Benincasa hispida. Bí xanh thuộc họ nhà bầu bí, mọc dạng dây leo, ăn được cả quả và lá. Ở Việt Nam bí xanh thường có 2 loại là bí xanh đá ( vỏ màu xanh nhẵn bóng, vỏ dày) và bí xanh phấn (vỏ bí có màu sáp trắng). Tùy từng giống mà mỗi loại có kích thước và trọng lượng khác nhau.
+
+Thành phần dinh dưỡng trong Bí xanh chủ yếu là nước, chất xơ và không chứa lipid. Theo kết quả của các nhà nghiên cứu, trong 100gr bí xanh chứ tới 19mg canxi, 2,4g glucid, 0,4g protid, 0,3mg sắt và đầy đủ các loại vitamin A, B1, B2, B9, C, E...và các thành phần chất khoáng khác.
+
+Theo kinh nghiệm dân gian, quả bí xanh có vị ngọt, tính mát tác dụng thanh nhiệt giải độc cơ thể, làm mát ruột, lợi tiểu, giảm béo, làm tan đờm. Bí xanh được sử dụng để điều trị các bệnh về đường hô hấp, bệnh gan, đái tháo đường,...`
+    },
+    {
+        id: 14,
+        name: "MƯỚP ĐẮNG",
+        price: 20000,
+        originalPrice: 25000,
+        discount: 20,
+        image: "/static/images/img/14.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Mướp đắng hay còn gọi là khổ qua, là một loại quả thân leo, thường được trồng ở vùng nhiệt đới và cận nhiệt đới, Trong đó có Việt Nam. Khổ qua được chọn làm một trong 6 cây thuốc tiêu biểu trong bộ tem dược thảo phát hành năm 1996 vì công dụng và tác dụng của khổ qua cực kỳ tốt cho sức khỏe.
+
+Giá trị dinh dưỡng: Theo tài liệu của Trường đại học Purdue về các loại rau quả châu Á nhập vào Mỹ, mướp đắng chứa nhiều nước, vitamin A, B1, B2, C, protein, lipid, carbohydrat và các khoáng chất như calcium, potassium, magné, sắt, kẽm. Rất cần thiết cho sức khỏe.`
+    },
+    {
+        id: 15,
+        name: "CỦ CẢI TRẮNG",
+        price: 30000,
+        originalPrice: 35000,
+        discount: 14,
+        image: "/static/images/img/15.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Củ cải trắng là loại củ quen thuộc trong bữa ăn hàng ngày của người Việt. Với vị cay nhẹ, giòn ngọt, củ cải trắng không chỉ là gia vị cho nhiều món ăn mà còn là nguồn cung cấp dồi dào vitamin và khoáng chất.
+
+Công dụng:
+- Nguồn vitamin C dồi dào: Giúp tăng cường hệ miễn dịch, chống lại các bệnh cảm cúm.
+- Hỗ trợ tiêu hóa: Giúp kích thích tiêu hóa, giảm đầy hơi, khó tiêu.
+- Làm đẹp da: Cải thiện làn da, giúp da sáng mịn, hồng hào.
+- Chống viêm: Giảm viêm nhiễm, tốt cho hệ hô hấp.
+- Giảm cholesterol: Giúp kiểm soát lượng cholesterol trong máu.`
+    },
+    {
+        id: 17,
+        name: "Bắp Mỹ / Ngô Ngọt / Bắp Mỹ hữu cơ",
+        price: 45000,
+        originalPrice: 50000,
+        discount: 10,
+        image: "/static/images/img/17.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Ngô ngọt, hay còn gọi là ngô đường, bắp ngọt, bắp đường,...
+
+Ngô ngọt là kết quả xuất hiện tự nhiên của đặc tính lặn của gen điều khiển việc chuyển đường thành tinh bột bên trong nội nhũ của hạt ngô.
+
+Đặc điểm của ngô ngọt:
+- Hạt: Hạt ngô ngọt có kích thước trung bình, màu sắc đa dạng từ vàng, cam đến trắng, tùy thuộc vào giống ngô. Vỏ hạt mỏng, khi chín thường có màu vàng tươi hoặc trắng ngà.
+- Vị ngọt: Ngô ngọt có vị ngọt tự nhiên do hàm lượng đường cao hơn so với các loại ngô khác.
+- Chất dinh dưỡng: Ngô ngọt là nguồn cung cấp dồi dào vitamin, khoáng chất và chất xơ, bao gồm vitamin A, C, E, B6, kali, magie, phốt pho,...`
+    },
+    {
+        id: 22,
+        name: "Khoai Mỡ Tím Tự Nhiên",
+        price: 120000,
+        originalPrice: 150000,
+        discount: 20,
+        image: "/static/images/img/22.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Mô tả sản phẩm:
+🥔 Khoai mỡ tím tự nhiên – củ tròn đều, ruột tím sẫm đẹp mắt, khi nấu lên sánh mịn, thơm béo, ăn rất bùi.
+✅ Thích hợp nấu canh khoai mỡ, chè khoai mỡ, súp, hấp hoặc làm bánh.
+🌿 Sản phẩm sạch – không thuốc bảo quản – không chất tạo màu.
+💪 Giàu chất xơ, vitamin C, B6 và chất chống oxy hóa anthocyanin – tốt cho tiêu hóa, giúp đẹp da, tăng sức đề kháng.
+📦 Đóng túi 1kg, bảo quản nơi thoáng mát hoặc để ngăn mát tủ lạnh.`
+    },
+    {
+        id: 26,
+        name: "Ngô Nếp Tươi Ăn Liền",
+        price: 35000,
+        originalPrice: 45000,
+        discount: 22,
+        image: "/static/images/img/26.png",
+        category: "Rau Củ Quả Tươi",
+        description: `🌽 Ngô Nếp Tươi Ngọt – Rau Củ Quả Sạch Nông Sản Dũng Hà
+
+Ngô nếp tươi được tuyển chọn từ nguồn nông sản sạch, hạt dẻo, ngọt bùi tự nhiên. Thích hợp luộc, hấp, nướng hoặc chế biến các món ăn bổ dưỡng.
+
+✅ Hạt dẻo mềm, thơm ngậy vị nếp truyền thống
+✅ Không thuốc bảo quản – Giao hàng tươi mỗi ngày
+✅ Đóng gói cẩn thận – Giữ nguyên độ tươi và ngọt
+✅ Phù hợp cho bữa ăn gia đình, nhà hàng, bếp ăn lớn`
+    },
+    {
+        id: 28,
+        name: "Củ Đậu Tươi",
+        price: 1500000,
+        originalPrice: 1800000,
+        discount: 17,
+        image: "/static/images/img/28.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Củ đậu (hay còn gọi là củ sắn nước) là loại củ có vị ngọt mát tự nhiên, giòn sần sật, rất được ưa chuộng trong các món ăn vặt, nộm, salad, hoặc ăn sống trực tiếp. Củ đậu tại Nông sản Dũng Hà được tuyển chọn từ nguồn nông trại sạch, không chất bảo quản, đảm bảo an toàn cho sức khỏe.
+
+✅ Vị ngọt thanh – Giòn mát
+✅ Ăn trực tiếp, làm nộm, xào, ép nước... đều ngon
+✅ Sạch, không chất bảo quản – Giao hàng toàn quốc
+✅ Phù hợp với người ăn chay, eat clean, thực dưỡng`
+    },
+    {
+        id: 30,
+        name: "Bí đỏ dài",
+        price: 250000,
+        originalPrice: 280000,
+        discount: 11,
+        image: "/static/images/img/30.png",
+        category: "Rau Củ Quả Tươi",
+        description: `🥕 BÍ ĐỎ DÀI TƯƠI – NGUỒN DINH DƯỠNG TỪ THIÊN NHIÊN
+
+✔ Xuất xứ: Đà Lạt – vùng đất nổi tiếng rau củ tươi ngon
+✔ Quả thon dài, ruột đặc, màu cam tươi, thơm bùi
+✔ Dễ chế biến: nấu canh, hầm xương, nấu cháo, làm bánh, súp dinh dưỡng
+✔ Giàu beta-caroten, vitamin A, chất xơ – tốt cho thị lực, tim mạch và tiêu hóa
+✔ Phù hợp ăn chay, thực dưỡng, bữa ăn healthy`
+    },
+    // Rau Ăn Lá
+    {
+        id: 3,
+        name: "Bắp cải tươi",
+        price: 27000,
+        originalPrice: 51000,
+        discount: 47,
+        image: "/static/images/img/3.png",
+        category: "Rau Ăn Lá",
+        description: `Bắp Cải/ Bắp Xú Trắng. Hàng Việt Nam 1,2-1,5kg (Giao HCM)
+
+- KÊNH HOẢ TỐC CHỈ MỞ TỪ 6H CHIỀU - 10H SÁNG.
+- Giao hàng từ 6h - 12h sáng... Khách đặt rau thịt trước 1 đêm để sáng nhận hàng được tươi ngon nhất. Nếu không thể nhận vào sáng sớm có thể nt cho mình hẹn giờ giao
+- Rau cắt 2h, Heo/ Bò mổ 3h sáng
+- Gà, Lươn, Ếch... và 1 số loại cá sẽ giữ sống cho đến khi có đơn mua mới làm... bên mình rửa sạch qua nước muối trước khi giao!
+- Khách sỉ ib cho mình info trước/
+*Flash sale giảm giá hàng tươi sống mỗi tối sau 19h... Mọi người ghé tham khảo nha...
+- Khách đặt đơn trên 100k, Bấm vào " Miễn phí vận chuyển" và "Mã giảm giá" để được giảm phí ship`
+    },
+    {
+        id: 5,
+        name: "CẢI NGỒNG",
+        price: 15000,
+        originalPrice: 17000,
+        discount: 11,
+        image: "/static/images/img/5.png",
+        category: "Rau Ăn Lá",
+        description: `- KÊNH HOẢ TỐC CHỈ MỞ TỪ 6H CHIỀU - 10H SÁNG.
+- Giao hàng từ 6h - 12h sáng... Khách đặt rau thịt trước 1 đêm để sáng nhận hàng được tươi ngon nhất. Nếu không thể nhận vào sáng sớm có thể nt cho mình hẹn giờ giao
+- Rau cắt 2h, Heo/ Bò mổ 3h sáng
+- Gà, Lươn, Ếch... và 1 số loại cá sẽ giữ sống cho đến khi có đơn mua mới làm... bên mình rửa sạch qua nước muối trước khi giao!
+- Khách sỉ ib cho mình info trước/
+*Flash sale giảm giá hàng tươi sống mỗi tối sau 19h... Mọi người ghé tham khảo nha...
+- Khách đặt đơn trên 100k, Bấm vào " Miễn phí vận chuyển" và "Mã giảm giá" để được giảm phí ship`
+    },
+    {
+        id: 8,
+        name: "MỒNG TƠI",
+        price: 20000,
+        originalPrice: 28000,
+        discount: 29,
+        image: "/static/images/img/8.png",
+        category: "Rau Ăn Lá",
+        description: `Mồng tơi (Basella rubra L. hoặc Basella alba L.) là một loại rau phổ biến và quen thuộc trong ẩm thực của người Việt. Đây là một cây rau leo hoặc thân lùn, với lá to, bóng và mọc so le. Vào cuối thu và đông, cây sẽ bung ra những chùm hoa có màu trắng hoặc hồng nhạt. Những quả mọng nhỏ của mồng tơi sẽ chuyển sang màu tím đen khi chín.
+
+Mồng tơi thường được trồng trong vườn nhà ở Việt Nam, bởi vì nó có khả năng kháng sâu bệnh tốt, đặc biệt thích hợp để lấy lá ăn vào mùa hè và thu. Cây có thể cắt lá và ngọn để sử dụng dần, và có thể sống được vài năm nếu được chăm sóc tốt. Với những đặc điểm ấn tượng về hình thái và tính ứng dụng, mồng tơi đã trở thành một loại rau phổ biến và quen thuộc trong ẩm thực truyền thống của Việt Nam.`
+    },
+    {
+        id: 9,
+        name: "GIÁ ĐỖ",
+        price: 25000,
+        originalPrice: 35000,
+        discount: 29,
+        image: "/static/images/img/9.png",
+        category: "Rau Ăn Lá",
+        description: `Nhắc đến giá đỗ hẳn không ai xa lạ gì với loại rau này vì nó là loại thực phẩm quá quen thuộc của người Việt ta. Ngoài tên gọi là giá đỗ ra nó còn có nhiều tên gọi khác như: giá, giá đậu, củ giá, quả giá. Nó chính là những hạt đậu xanh được ủ nảy mầm, kích thước khoảng từ 2-3 đốt tay người lớn.
+
+Trong loại rau này có rất nhiều Vitamin đặc biệt là vitamin C, khoáng chất, amino acid, protein và những chất có nguồn gốc thực vật, những chất giúp mầm cây phát triển và cũng rất có lợi có sức khỏe con người. Nó được biết đến là một loại rau ngon – bổ – rẻ và rất được ưa chuộng, tuy nhiên những công dụng chữa bệnh thần kỳ của giá đỗ thì chưa mấy ai biết rõ.`
+    },
+    {
+        id: 16,
+        name: "Cải xanh",
+        price: 25000,
+        originalPrice: 30000,
+        discount: 17,
+        image: "/static/images/img/16.png",
+        category: "Rau Ăn Lá",
+        description: `Thành phần: 100% cải xanh tươi sạch, an toàn, không chất bảo quản, chất lượng cao
+
+Cách thái rau cải nấu canh:
+- Bước 1: Bạn dùng dao sắc để cắt bỏ đoạn rau dài khoảng 1,5 cm - 2,5 cm bên trên phần gốc nối liền với lá. Sau đó, bạn hãy nhặt bỏ hết các lá úa vàng bên ngoài, lá cứng của cây rau cải.
+- Bước 2: Bạn tiến hành rửa rau cải 3 lần với nước muối loãng nhằm loại bỏ tạp chất và bụi đất trên lá rau.
+- Bước 3: Tiếp đến, bạn nắm rau cải ngọt lại thành bó và dùng dao nhà bếp để cắt rau thành khúc dài 1, 2 cm. Với kích thước nhỏ này thì khi nấu món canh, rau cải dễ chín và vừa ăn.`
+    },
+    {
+        id: 24,
+        name: "CẢI XOĂN KALE",
+        price: 250000,
+        originalPrice: 300000,
+        discount: 17,
+        image: "/static/images/img/24.png",
+        category: "Rau Ăn Lá",
+        description: `Cải xoăn kale là một trong những loại rau xanh giàu dinh dưỡng nhất trên thế giới. Với lá màu xanh đậm, dày và xoăn, cải xoăn kale chứa một lượng lớn vitamin, khoáng chất và chất chống oxy hóa. Sản phẩm của chúng tôi được trồng theo phương pháp hữu cơ, không sử dụng hóa chất, đảm bảo an toàn cho sức khỏe.
+
+Công dụng:
+- Thực phẩm nhiều dinh dưỡng: Cải xoăn kale chứa lượng vitamin K, vitamin C, vitamin A cao gấp nhiều lần các loại rau xanh khác.
+- Tốt cho tim mạch: Giúp giảm cholesterol xấu, ngăn ngừa các bệnh về tim mạch.
+- Chống oxy hóa: Bảo vệ tế bào, ngăn ngừa lão hóa và các bệnh mãn tính.
+- Hỗ trợ tiêu hóa: Cải thiện hệ tiêu hóa, ngăn ngừa táo bón.
+- Giảm cân: Giàu chất xơ, giúp no lâu, hỗ trợ giảm cân.`
+    },
+    {
+        id: 32,
+        name: "Rau tiến vua",
+        price: 80000,
+        originalPrice: 100000,
+        discount: 20,
+        image: "/static/images/img/32.png",
+        category: "Rau Ăn Lá",
+        description: `🌟 Điểm nổi bật của rau tiến vua khô loại 1 🌟
+- Giàu chất xơ và vitamin: Rau tiến vua khô là nguồn cung cấp chất xơ và vitamin dồi dào, hỗ trợ tiêu hóa và tốt cho sức khỏe tổng thể.
+- Hỗ trợ giảm cân: Với lượng calo thấp, rau tiến vua khô là lựa chọn tuyệt vời cho những ai muốn giảm cân và giữ dáng.
+- Dưỡng thai cho bà bầu: Rau tiến vua khô cũng là một thực phẩm bổ dưỡng cho bà bầu, giúp dưỡng thai và cung cấp các chất dinh dưỡng cần thiết.
+
+📦 Thông tin về sản phẩm 📦
+Rau tiến vua khô loại 1 có màu xanh xám nhẹ, tươi mới, không nấm mốc, và có mùi hương đặc trưng. Sản phẩm được đóng gói cẩn thận để đảm bảo chất lượng và hương vị thơm ngon.
+
+🍽️ Cách chế biến đa dạng 🍽️
+Rau tiến vua khô có thể chế biến thành nhiều món ngon như gỏi chân gà, nộm, và xào thịt bò. Đây là thực phẩm linh hoạt và dễ chế biến, phù hợp với nhiều món ăn khác nhau.`
+    },
+    {
+        id: 33,
+        name: "CẢI BẸ XANH CẢI",
+        price: 150000,
+        originalPrice: 180000,
+        discount: 17,
+        image: "/static/images/img/33.png",
+        category: "Rau Ăn Lá",
+        description: `CẢI BẸ XANH CẢI CANH KHỔNG LỒ ĂN NGỌT KHÔNG ĐẮNG
+LA TO ĂN NGỌT TRỒNG 1 LẦN ĂN CẢ NĂM
+CÓ THỂ BÓC BẸ ĂN NGỌT KHÔNG BỊ ĐẮNG
+NẤU CANH GÀ THÌ NGON HẾT NẮC`
+    },
+    // Rau Gia Vị
+    {
+        id: 2,
+        name: "HÀNH LÁ",
+        price: 40000,
+        originalPrice: 60000,
+        discount: 33,
+        image: "/static/images/img/2.png",
+        category: "Rau Gia Vị",
+        description: `🌟 Đặc điểm nổi bật của hạt giống hành lá
+- Dễ trồng, phù hợp với nhiều loại đất, đặc biệt là đất thịt nhẹ.
+- Chịu nhiệt tốt, có thể trồng quanh năm mà không lo ảnh hưởng bởi thời tiết.
+- Hành lá thơm ngon, màu sắc đẹp, phù hợp cho cả trồng trong chậu lẫn ngoài ruộng.
+
+🌱 Hướng dẫn gieo trồng đơn giản
+- Ngâm hạt trong nước sạch để kích thích nảy mầm.
+- Gieo hạt lên luống đã chuẩn bị, phủ nhẹ trấu hoặc rơm để giữ ẩm.
+- Đặt chậu hoặc luống ở nơi có ánh sáng dịu, tránh nắng gắt và gió mạnh.
+- Tưới nước đều đặn, giữ đất luôn ẩm nhưng không ngập úng.
+- Khi cây con đã phát triển khỏe mạnh, có thể chuyển sang chậu lớn hơn hoặc trồng trực tiếp ngoài ruộng.
+
+🌿 Biến thể sản phẩm
+- Gói 50 Hạt Giống Hành Lá Cao Sản Dễ Trồng, Thơm Ngon Giống Mới Chịu Nhiệt 4 Mùa.`
+    },
+    {
+        id: 6,
+        name: "SẢ TƯƠI",
+        price: 312000,
+        originalPrice: 325000,
+        discount: 4,
+        image: "/static/images/img/6.png",
+        category: "Rau Gia Vị",
+        description: `Sả cây tươi CHỈ SHIP KHU VỰC TPHCM
+
+Ngoài ra Shop còn nhiều loại trái cây là đặc sản của nhiều vùng miền trên khắp cả nước. Khách iu có thể vào Shop để xem thêm nhé!
+Nếu cần tư vấn thêm cứ nhắn tin cho shop ạ, Shop luôn chờ đợi để được phục vụ!
+NẾU NHẬN HÀNG VÀ SỬ DỤNG ƯNG Ý THÌ XIN KHÁCH IU CỦA SHOP HÃY ĐÁNH GIÁ SẢN PHẨM 5* DÙM SHOP NHA
+SHOP XIN CHÂN THÀNH CẢM ƠN RẤT NHIỀU Ạ!`
+    },
+    {
+        id: 18,
+        name: "HÀNH TA KHÔ KINH BẮC - HÀNH TÀU KHÔ",
+        price: 35000,
+        originalPrice: 40000,
+        discount: 13,
+        image: "/static/images/img/18.png",
+        category: "Rau Gia Vị",
+        description: `Hành tây khô là sản phẩm được chế biến từ những củ hành tây tươi ngon, qua quá trình sấy khô hiện đại, giữ nguyên hương vị thơm ngon đặc trưng và các dưỡng chất quý giá. Hành tây khô có dạng lát mỏng, dễ bảo quản và sử dụng, là gia vị không thể thiếu trong gian bếp của mọi nhà.
+
+Công dụng:
+- Gia vị đa năng: Hành tây khô dùng để nêm nếm các món xào, nấu canh, hầm, kho, làm gia vị ướp thịt, tạo hương vị thơm ngon đặc trưng cho món ăn.
+- Bổ sung dinh dưỡng: Hành tây khô cung cấp vitamin, khoáng chất như vitamin C, vitamin B6, kali, giúp tăng cường sức khỏe.
+- Tiện lợi: Dễ bảo quản, sử dụng nhanh chóng, tiết kiệm thời gian nấu nướng.`
+    },
+    {
+        id: 19,
+        name: "TỎI TA",
+        price: 180000,
+        originalPrice: 200000,
+        discount: 10,
+        image: "/static/images/img/19.png",
+        category: "Rau Gia Vị",
+        description: `Tỏi có nguồn gốc từ Trung Á và đông bắc Iran, và từ lâu đã trở thành một loại gia vị phổ biến trên toàn thế giới, với lịch sử vài nghìn năm tiêu thụ và sử dụng của con người. Nó được người Ai Cập cổ đại biết đến, và đã được sử dụng như một hương liệu thực phẩm và như một loại thuốc truyền thống.
+
+Tỏi có thể sử dụng thành gia vị trong nước chấm pha chế gồm mắm, tỏi, ớt, tương, đường...Hoặc tỏi được trộn đều với các món rau xào (nhất là rau muống xào...) khiến món ăn dậy mùi thơm.
+
+Công dụng tỏi khô:
+- Chữa cảm cúm
+- Chữa đầy bụng khó tiêu
+- Chữa ho
+- Tiểu đường
+- Phòng chống ung thư`
+    },
+    {
+        id: 20,
+        name: "GỪNG TƯƠI",
+        price: 250000,
+        originalPrice: 280000,
+        discount: 11,
+        image: "/static/images/img/20.png",
+        category: "Rau Gia Vị",
+        description: `1. Thông tin sản phẩm:
+- Tên sản phẩm: Gừng Tươi
+- Xuất xứ: Việt Nam
+- Thành phần: 100% Gừng Tươi nguyên chất
+
+2. Công dụng:
+- Giúp làm ấm cơ thể, hỗ trợ điều trị cảm lạnh, ho, sổ mũi.
+- Hỗ trợ tiêu hóa, giảm buồn nôn, đầy bụng, khó tiêu.
+- Giảm đau nhức cơ bắp, khớp xương.
+- Hỗ trợ điều trị bệnh tim mạch, giảm cholesterol xấu.
+- Tăng cường hệ miễn dịch, chống oxy hóa.
+
+3. Hướng dẫn sử dụng:
+- Pha trà gừng: Cắt lát mỏng gừng tươi, cho vào ấm hãm với nước sôi khoảng 10-15 phút rồi thưởng thức. Có thể thêm mật ong, chanh cho hương vị thơm ngon.
+- Dùng gừng tươi để chế biến món ăn: Gừng tươi được sử dụng phổ biến trong nấu ăn, giúp khử tanh, tăng hương vị cho món ăn.
+- Ngâm gừng mật ong: Gừng tươi thái lát mỏng, ngâm với mật ong nguyên chất trong lọ kín, dùng mỗi ngày 1-2 muỗng cà phê để hỗ trợ sức khỏe.`
+    },
+    {
+        id: 23,
+        name: "HƯƠNG THẢO TƯƠI",
+        price: 180000,
+        originalPrice: 220000,
+        discount: 18,
+        image: "/static/images/img/23.png",
+        category: "Rau Gia Vị",
+        description: `Hương thảo tươi (Rosemary) là loại thảo mộc thơm ngát, được sử dụng rộng rãi trong ẩm thực phương Tây. Với hương vị đặc trưng, hơi cay nồng và vị đắng nhẹ, hương thảo tươi không chỉ làm tăng thêm hương vị cho món ăn mà còn mang lại nhiều lợi ích cho sức khỏe. Sản phẩm hương thảo tươi của chúng tôi được trồng tại vườn rau sạch, đảm bảo an toàn và tươi ngon.
+
+Công dụng:
+- Gia vị tuyệt vời: Hương thảo tươi là gia vị không thể thiếu trong các món nướng, hầm, sốt, nước xốt.
+- Tốt cho sức khỏe: Giúp cải thiện trí nhớ, giảm stress, chống oxy hóa, hỗ trợ tiêu hóa.
+- Làm đẹp da: Có thể sử dụng trong các sản phẩm làm đẹp như mặt nạ, dầu gội.
+
+Cách sử dụng:
+- Nấu ăn: Cho lá hương thảo tươi vào các món nướng, hầm, sốt, nước xốt để tăng hương vị.
+- Làm trà: Pha trà hương thảo để thư giãn, giảm stress.
+- Làm gia vị ướp thịt: Kết hợp hương thảo tươi với các loại gia vị khác để ướp thịt trước khi nướng hoặc chiên.`
+    },
+    {
+        id: 27,
+        name: "Ớt chỉ thiên xanh",
+        price: 120000,
+        originalPrice: 150000,
+        discount: 20,
+        image: "/static/images/img/27.png",
+        category: "Rau Gia Vị",
+        description: `Ớt chỉ thiên là một loại ớt phổ biến ở Việt Nam. Loại ớt này có kích thước nhỏ, dài khoảng 1-3 cm, đường kính 3-7 mm, thường hướng lên trời. Ớt chỉ thiên có vị cay nồng, màu sắc đa dạng từ xanh lục, vàng cam đến đỏ tươi khi chín.
+
+Công dụng của ớt chỉ thiên:
+- Ớt chỉ thiên được sử dụng phổ biến trong ẩm thực Việt Nam để làm gia vị cho các món ăn như canh, kho, xào, lẩu, gỏi, nộm,...
+- Ớt chỉ thiên cũng được dùng để làm tương ớt, sa tế, ớt bột,...
+- Ngoài ra, ớt chỉ thiên còn được sử dụng trong y học dân gian để chữa các bệnh như cảm cúm, ho, đau bụng, tiêu chảy,...`
+    },
+    {
+        id: 29,
+        name: "MÙI TA",
+        price: 120000,
+        originalPrice: 150000,
+        discount: 20,
+        image: "/static/images/img/29.png",
+        category: "Rau Gia Vị",
+        description: `Rau mùi hay còn được gọi bằng các tên gọi khác như: rau ngò ta, ngò rí, mùi ta, ngổ, mùi tui, nguyên tuy, hồ tuy, hương tuy, ngổ thơm,....Rau mùi ta là một loại cây thân thảo, loại rau này có nguồn gốc từ các nước Tây Nam Á và Châu Phi.
+
+Làm sao để bảo quản rau mùi tươi lâu:
+
+Cách 1: bảo quản rau mùi bằng hộp nhựa kín
+Sau khi mua rau mùi bạn cần nhặt bỏ gốc và những phần lá bị úa. Sau đó ngâm rau mùi với nước lạnh trong khoảng 5-10 phút. Vớt rau mùi ra và để cho ráo nước. Để rau mùi lên giấy và cuốn lại. Cho rau mùi vào hộp nhựa hoặc túi zip để bảo quản.
+
+Cách 2: ngâm trong nước
+Nhặt rau sạch rau mùi. Dùng giấy thấm khô nếu rau bị ẩm ướt. Chuẩn bị một cái lọ thủy tinh, rửa sạch rồi cho nước lạnh vào. Sau đó xếp rau mùi vào lọ. Cuối cùng là sử dụng túi nilon để phủ lên bề mặt lọ thủy tinh. Bảo quản bình rau trong ngăn mát tủ lạnh. Cách bảo quản rau mùi này sẽ giúp cho độ tươi của rau mùi lâu đến 2 tuần. Chú ý: 4-5 ngày lại bỏ ra thay nước 1 lần.`
+    },
+    // Rau Ăn Lá
+    {
+        id: 21,
+        name: "Ngọn Su Su Tươi",
+        price: 150000,
+        originalPrice: 180000,
+        discount: 17,
+        image: "/static/images/img/21.png",
+        category: "Rau Ăn Lá",
+        description: `📌 Mô tả sản phẩm:
+🥬 Ngọn su su – Rau xanh dân dã nhưng cực kỳ bổ dưỡng, đặc sản vùng cao được ưa chuộng trong bữa cơm Việt.
+✅ Lá non, cọng giòn – vị ngọt mát tự nhiên
+✅ Dễ chế biến: xào tỏi, luộc chấm trứng, nấu canh…
+🌿 Thu hái trong ngày – Đảm bảo tươi giòn, không héo úa
+📦 Giao hàng nhanh – đóng gói hút chân không (nếu có yêu cầu)
+💚 Cam kết: Không thuốc sâu – Không chất bảo quản – Rau sạch Dũng Hà`
+    },
+    // Rau Củ Quả Tươi (Dược Liệu)
+    {
+        id: 25,
+        name: "CỦ MÀI",
+        price: 40000,
+        originalPrice: 50000,
+        discount: 20,
+        image: "/static/images/img/25.png",
+        category: "Rau Củ Quả Tươi",
+        description: `Củ mài, hay còn gọi là hoài sơn, là một loại củ có vị ngọt, tính bình, được sử dụng rộng rãi trong y học cổ truyền. Củ mài chứa nhiều tinh bột, vitamin và khoáng chất, có tác dụng bồi bổ cơ thể, tăng cường sức khỏe. Sản phẩm củ mài của chúng tôi được trồng tại những vùng đất có khí hậu mát mẻ, đảm bảo chất lượng và độ tươi ngon.
+
+Công dụng:
+- Bổ thận, ích khí: Củ mài có tác dụng bổ thận, ích khí, tăng cường sinh lực cho cơ thể.
+- Tăng cường tiêu hóa: Giúp ăn ngon miệng, tiêu hóa tốt, đặc biệt tốt cho người bị tiêu chảy, đầy bụng.
+- Bổ phổi: Hỗ trợ điều trị các bệnh về phổi như ho, hen suyễn.
+- Làm đẹp da: Củ mài giúp da căng mịn, hồng hào, giảm nếp nhăn.
+- Hỗ trợ điều trị tiểu đường: Giúp ổn định đường huyết, tốt cho người bệnh tiểu đường.`
+    }
+];
+
+// Cart helpers ===========================================================
+function readCartFromStorage() {
+    try {
+        const raw = localStorage.getItem('cart');
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+        console.error('Cannot parse cart from storage:', error);
+        return [];
+    }
+}
+
+function saveCartToStorage(cartData) {
+    try {
+        localStorage.setItem('cart', JSON.stringify(cartData));
+    } catch (error) {
+        console.error('Cannot save cart to storage:', error);
+    }
+}
+
+function loadCartFromStorage() {
+    cart = readCartFromStorage();
+}
+
+let cart = [];
+
+// Format currency
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    }).format(amount);
+}
+
+// Carousel functionality
+let currentSlideIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (index >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (index < 0) {
+        currentSlideIndex = slides.length - 1;
+    } else {
+        currentSlideIndex = index;
+    }
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[currentSlideIndex].classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+}
+
+function changeSlide(direction) {
+    showSlide(currentSlideIndex + direction);
+}
+
+function currentSlide(index) {
+    showSlide(index - 1);
+}
+
+// Auto slide carousel
+setInterval(() => {
+    changeSlide(1);
+}, 5000);
+
+// Countdown timer
+function updateCountdown() {
+    const now = new Date().getTime();
+    const endTime = new Date().setHours(23, 59, 59, 999);
+    const distance = endTime - now;
+    
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    const countdownEl = document.getElementById('countdown');
+    if (countdownEl) {
+        countdownEl.textContent = 
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Create product card
+function createProductCard(product) {
+    return `
+        <div class="product-card" onclick="viewProductDetail(${product.id})" style="cursor: pointer;">
+            <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/200x200/CCCCCC/666666?text=No+Image'">
+            <div class="product-name">${product.name}</div>
+            <div class="product-price">${formatCurrency(product.price)}</div>
+            <div class="product-original-price">${formatCurrency(product.originalPrice)}</div>
+            <div class="product-discount">-${product.discount}%</div>
+            <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
+                Thêm Vào Giỏ
+            </button>
+        </div>
+    `;
+}
+
+
+function saveCartToStorage(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function readCartFromStorage() {
+    const raw = localStorage.getItem('cart');
+    return raw ? JSON.parse(raw) : [];
+}
+
+
+// View product detail
+function viewProductDetail(productId) {
+    window.location.href = `/product-detail?id=${productId}`;
+}
+
+// Load products
+function loadProducts() {
+    // Check if products array is ready
+    if (typeof products === 'undefined' || !products || products.length === 0) {
+        console.warn('⚠️ Products not ready yet, retrying in 100ms...');
+        setTimeout(loadProducts, 100);
+        return;
+    }
+    
+    console.log('✅ Loading products, total:', products.length);
+    
+    const rauCuDalatContainer = document.getElementById('rauCuDalatProducts');
+    const rauCuSachContainer = document.getElementById('rauCuSachProducts');
+    const featuredContainer = document.getElementById('featuredProducts');
+    
+    // Rau Củ Sạch Đà Lạt (Rau Củ Quả Tươi)
+    if (rauCuDalatContainer) {
+        const rauCuDalatProducts = products.filter(p => p.category === "Rau Củ Quả Tươi").slice(0, 8);
+        console.log('📦 Rau Củ Quả Tươi:', rauCuDalatProducts.length, 'products');
+        if (rauCuDalatProducts.length > 0) {
+            rauCuDalatContainer.innerHTML = 
+                rauCuDalatProducts.map(product => createProductCard(product)).join('');
+        } else {
+            console.warn('⚠️ No products found for Rau Củ Quả Tươi');
+        }
+    }
+    
+    // Rau Củ Sạch (Rau Ăn Lá)
+    if (rauCuSachContainer) {
+        const rauCuSachProducts = products.filter(p => p.category === "Rau Ăn Lá").slice(0, 8);
+        console.log('📦 Rau Ăn Lá:', rauCuSachProducts.length, 'products');
+        if (rauCuSachProducts.length > 0) {
+            rauCuSachContainer.innerHTML = 
+                rauCuSachProducts.map(product => createProductCard(product)).join('');
+        } else {
+            console.warn('⚠️ No products found for Rau Ăn Lá');
+        }
+    }
+    
+    // Featured Products (mix of different categories - Rau Gia Vị)
+    if (featuredContainer) {
+        const featuredProducts = products.filter(p => 
+            p.category === "Rau Gia Vị"
+        ).slice(0, 12);
+        console.log('📦 Rau Gia Vị (Featured):', featuredProducts.length, 'products');
+        if (featuredProducts.length > 0) {
+            featuredContainer.innerHTML = 
+                featuredProducts.map(product => createProductCard(product)).join('');
+        } else {
+            console.warn('⚠️ No products found for Rau Gia Vị');
+        }
+    }
+    
+    console.log('✅ Products loaded successfully');
+}
+
+// Add to cart
+function addToCart(productId) {
+    console.log('Adding product to cart, productId:', productId, 'Type:', typeof productId);
+    
+    const product = products.find(p => Number(p.id) === Number(productId));
+    if (!product) {
+        console.error('Product not found with ID:', productId);
+        alert('Lỗi: Không tìm thấy sản phẩm. Vui lòng thử lại.');
+        return;
+    }
+    
+    console.log('Found product:', product.name, 'ID:', product.id);
+    
+    // Get cart from localStorage using helper function
+    let currentCart = [];
+    if (typeof readCartFromStorage === 'function') {
+        currentCart = readCartFromStorage();
+    } else {
+        try {
+            const raw = localStorage.getItem('cart');
+            currentCart = raw ? JSON.parse(raw) : [];
+            if (!Array.isArray(currentCart)) {
+                currentCart = [];
+            }
+        } catch (error) {
+            console.error('Error reading cart:', error);
+            currentCart = [];
+        }
+    }
+    
+    console.log('Current cart before adding:', currentCart);
+    console.log('Current cart length:', currentCart.length);
+    
+    // Find existing item by id (normalize IDs to numbers for comparison)
+    // Ensure strict comparison to avoid adding duplicate items
+    console.log('🔍 Searching for existing product in cart...');
+    console.log('🔍 Product ID to find:', productId, 'Type:', typeof productId);
+    console.log('🔍 Cart items:', currentCart.map(item => ({ id: item.id, idType: typeof item.id, name: item.name, quantity: item.quantity })));
+    
+    // Simple and reliable ID comparison
+    const existingItemIndex = currentCart.findIndex((item, index) => {
+        // Convert both IDs to numbers for comparison
+        const itemIdNum = parseInt(item.id);
+        const productIdNum = parseInt(productId);
+        
+        // Compare as numbers
+        const isMatch = !isNaN(itemIdNum) && !isNaN(productIdNum) && itemIdNum === productIdNum;
+        
+        if (isMatch) {
+            console.log(`✅ FOUND existing item at index ${index}: ID=${item.id}, Name=${item.name}, Current quantity=${item.quantity}`);
+        }
+        
+        return isMatch;
+    });
+    
+    const cartLengthBefore = currentCart.length;
+    console.log('🔍 Search result - existingItemIndex:', existingItemIndex, '( -1 means not found)');
+    
+    if (existingItemIndex !== -1) {
+        // Item already exists, just increase quantity - DO NOT add new item
+        const existingItem = currentCart[existingItemIndex];
+        const oldQuantity = parseInt(existingItem.quantity) || 0;
+        const newQuantity = oldQuantity + 1;
+        
+        // Update quantity - đảm bảo các trường cần thiết
+        existingItem.quantity = newQuantity;
+        if (!existingItem.stock) existingItem.stock = product.stock || 99;
+        if (!existingItem.variant) existingItem.variant = product.variant || 'Mặc định';
+        if (!existingItem.originalPrice) existingItem.originalPrice = product.originalPrice || product.price;
+        if (!existingItem.discount) existingItem.discount = product.discount || 0;
+        if (!existingItem.description) existingItem.description = product.description || '';
+        
+        console.log(`🔄 UPDATED existing item: ${existingItem.name}`);
+        console.log(`   Old quantity: ${oldQuantity}`);
+        console.log(`   New quantity: ${newQuantity}`);
+        console.log(`   Item object after update:`, existingItem);
+        console.log(`📊 Cart length remains: ${currentCart.length} (no new item added)`);
+    } else {
+        // New item, add to cart - đảm bảo format nhất quán
+        const newItem = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            originalPrice: product.originalPrice || product.price,
+            discount: product.discount || 0,
+            image: product.image,
+            quantity: 1,
+            variant: "Mặc định",
+            stock: 99
+        };
+        currentCart.push(newItem);
+        console.log(`➕ Added NEW item: ${newItem.name} (ID: ${newItem.id}) with quantity: ${newItem.quantity}`);
+        console.log(`📊 Cart length increased: ${cartLengthBefore} → ${currentCart.length}`);
+    }
+    
+    console.log('Cart after update:', currentCart);
+    console.log('📦 Total unique products in cart:', currentCart.length);
+    console.log('📦 Total quantity across all items:', currentCart.reduce((sum, item) => sum + (item.quantity || 0), 0));
+    
+    // Save cart to localStorage - ALWAYS save
+    try {
+        const cartJson = JSON.stringify(currentCart);
+        localStorage.setItem('cart', cartJson);
+        console.log('✅ Cart saved to localStorage successfully');
+        
+        // Verify the save worked
+        const verifyCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        console.log('✅ Verification - Cart in localStorage after save:', verifyCart);
+        
+        // Verify the updated item's quantity
+        if (existingItemIndex !== -1) {
+            const verifyItem = verifyCart.find(item => parseInt(item.id) === parseInt(productId));
+            if (verifyItem) {
+                console.log(`✅ Verified: Item ${verifyItem.name} has quantity ${verifyItem.quantity} in localStorage`);
+                if (parseInt(verifyItem.quantity) !== parseInt(currentCart[existingItemIndex].quantity)) {
+                    console.error(`❌ ERROR: Quantity mismatch! Expected ${currentCart[existingItemIndex].quantity}, got ${verifyItem.quantity}`);
+                }
+            } else {
+                console.error(`❌ ERROR: Could not find updated item in localStorage!`);
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error saving cart:', error);
+        alert('Lỗi: Không thể lưu sản phẩm vào giỏ hàng. Vui lòng thử lại.');
+        return;
+    }
+    
+    // Update global cart variable
+    if (typeof cart !== 'undefined') {
+        cart = currentCart;
+    }
+    
+    // Update UI - this will refresh cart count and display
+    updateCartUI();
+    
+    // Show appropriate notification
+    if (existingItemIndex !== -1) {
+        const updatedItem = currentCart[existingItemIndex];
+        showNotification(`Đã thêm sản phẩm vào giỏ hàng! `);
+    } else {
+        showNotification('Đã thêm sản phẩm vào giỏ hàng!');
+    }
+}
+
+// Remove from cart
+function removeFromCart(productId) {
+    let currentCart = readCartFromStorage();
+    currentCart = currentCart.filter(item => Number(item.id) !== Number(productId));
+    saveCartToStorage(currentCart);
+    if (typeof cart !== 'undefined') {
+        cart = currentCart;
+    }
+    updateCartUI();
+}
+
+
+// Update quantity
+function updateQuantity(productId, change) {
+    let currentCart = readCartFromStorage();
+    const item = currentCart.find(item => Number(item.id) === Number(productId));
+    if (item) {
+        item.quantity = (item.quantity || 0) + change;
+        if (item.quantity <= 0) {
+            removeFromCart(productId);
+            return;
+        }
+    }
+    saveCartToStorage(currentCart);
+    if (typeof cart !== 'undefined') {
+        cart = currentCart;
+    }
+    updateCartUI();
+}
+
+// Update cart UI
+function updateCartUI() {
+    const currentCart = readCartFromStorage();
+    if (typeof cart !== 'undefined') {
+        cart = currentCart;
+    }
+    
+    const cartCountEl = document.querySelector('.cart-count');
+    if (cartCountEl) {
+        // Count unique products by ID, not total quantity
+        const cartCount = currentCart.length;
+        cartCountEl.textContent = cartCount;
+    }
+    
+    const cartItems = document.getElementById('cartItems');
+    if (cartItems) {
+        if (currentCart.length === 0) {
+            cartItems.innerHTML = '<p>Giỏ hàng trống</p>';
+        } else {
+            cartItems.innerHTML = currentCart.map(item => {
+                // Đảm bảo có đầy đủ thông tin sản phẩm
+                const productId = Number(item.id);
+                const productName = item.name || 'Sản phẩm không tên';
+                const productPrice = item.price || 0;
+                const productQuantity = item.quantity || 1;
+                const productImage = item.image || '/static/images/img/1.png';
+                
+                // Log để debug
+                console.log(`🛒 Rendering cart item: ID=${productId}, Name=${productName}, Quantity=${productQuantity}`);
+                
+                return `
+                <div class="cart-item" data-product-id="${productId}">
+                    <div class="cart-item-left" style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                        <img src="${productImage}" alt="${productName}" 
+                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;"
+                             onerror="this.src='/static/images/img/1.png'">
+                        <div class="cart-item-info" style="flex: 1;">
+                            <a href="/product-detail?id=${productId}" 
+                               style="text-decoration: none; color: inherit; cursor: pointer;">
+                                <div class="cart-item-name" style="font-weight: 500; margin-bottom: 5px;">${productName}</div>
+                            </a>
+                            <div class="cart-item-price" style="color: #4caf50; font-weight: bold; margin-bottom: 5px;">${formatCurrency(productPrice)}</div>
+                            <div class="cart-item-quantity" style="display: flex; align-items: center; gap: 10px;">
+                                <button class="quantity-btn" onclick="updateQuantity(${productId}, -1)" 
+                                        style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">-</button>
+                                <span style="min-width: 30px; text-align: center;">${productQuantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${productId}, 1)" 
+                                        style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${productId})" 
+                            style="background: red; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Xóa</button>
+                </div>
+            `;
+            }).join('');
+        }
+    }
+    
+    const cartTotalEl = document.getElementById('cartTotal');
+    if (cartTotalEl) {
+        const total = currentCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotalEl.textContent = formatCurrency(total);
+    }
+}
+
+// Cart modal and navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Load cart from localStorage on page load
+    // Đảm bảo giỏ hàng được load lại đúng cách, đặc biệt sau khi thanh toán
+    console.log('🛒 Loading cart on index page...');
+    
+    // Kiểm tra xem có giỏ hàng trong localStorage không
+    const savedCart = localStorage.getItem('cart');
+    console.log('📦 Saved cart in localStorage:', savedCart ? `Found (${savedCart.length} chars)` : 'Not found');
+    
+    // Load cart từ localStorage
+    cart = readCartFromStorage();
+    console.log('✅ Cart loaded:', cart);
+    console.log('📊 Cart items count:', cart ? cart.length : 0);
+    
+    // Nếu giỏ hàng rỗng nhưng có checkoutItems, khôi phục từ checkoutItems
+    if ((!cart || cart.length === 0)) {
+        const checkoutItems = localStorage.getItem('checkoutItems');
+        if (checkoutItems) {
+            try {
+                const parsedCheckoutItems = JSON.parse(checkoutItems);
+                if (Array.isArray(parsedCheckoutItems) && parsedCheckoutItems.length > 0) {
+                    console.log('🔄 Restoring cart from checkoutItems...');
+                    cart = parsedCheckoutItems;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    console.log('✅ Cart restored from checkoutItems:', cart);
+                }
+            } catch (e) {
+                console.error('❌ Error restoring cart from checkoutItems:', e);
+            }
+        }
+    }
+    
+    // Đảm bảo cart được lưu lại
+    if (cart && cart.length > 0) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log('💾 Cart saved to localStorage');
+    }
+    
+    updateCartUI();
+
+    
+    const cartIcon = document.querySelector('.cart-icon');
+    const cartModal = document.getElementById('cartModal');
+    const closeModal = document.querySelector('.close');
+    
+    // Navigate to cart page when clicking cart icon
+    if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+            // Save cart to localStorage before navigating
+            if (typeof cart !== 'undefined' && cart.length > 0) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+            window.location.href = '/cart';
+        });
+    }
+    
+    // Keep modal for quick view (if needed)
+    if (cartModal && closeModal) {
+        closeModal.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+    }
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === cartModal) {
+            cartModal.style.display = 'none';
+        }
+    });
+    
+    // Search functionality
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-bar input');
+    
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput ? searchInput.value.trim() : '';
+            if (query) {
+                alert(`Tìm kiếm: ${query}`);
+            }
+        });
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchBtn) {
+                searchBtn.click();
+            }
+        });
+    }
+    
+    // Initialize - wait a bit to ensure products array is ready
+    setTimeout(function() {
+        loadProducts();
+        updateCartUI();
+    }, 50);
+});
+
+// Notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 3000;
+        animation: slideIn 0.3s ease;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
+
+// Add animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Navigate to category page
+function goToCategory(categoryName) {
+    const encodedCategory = encodeURIComponent(categoryName);
+    window.location.href = `/category?cat=${encodedCategory}`;
+}
+
+// Navigation functions
+function showHomePage() {
+    document.getElementById('homePageContent').style.display = 'block';
+    document.getElementById('rauCuQuaPage').style.display = 'none';
+    document.getElementById('lienHePage').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showRauCuQua() {
+    document.getElementById('homePageContent').style.display = 'none';
+    document.getElementById('rauCuQuaPage').style.display = 'block';
+    document.getElementById('lienHePage').style.display = 'none';
+    
+    // Load all rau củ quả products
+    const allRauCuQuaContainer = document.getElementById('allRauCuQuaProducts');
+    if (allRauCuQuaContainer) {
+        const allRauCuQuaProducts = products.filter(p => 
+            p.category === "Rau Củ Quả Tươi" || 
+            p.category === "Rau Ăn Lá" || 
+            p.category === "Rau Gia Vị" || 
+            p.category === "Rau Lá / Rau Xanh"
+        );
+        allRauCuQuaContainer.innerHTML = 
+            allRauCuQuaProducts.map(product => createProductCard(product)).join('');
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showLienHe() {
+    document.getElementById('homePageContent').style.display = 'none';
+    document.getElementById('rauCuQuaPage').style.display = 'none';
+    document.getElementById('lienHePage').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}

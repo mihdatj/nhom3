@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="vi">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhóm 3 – Mang Sức Khoẻ Và Cuộc Sống An Lành Đến Mọi Nơi</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .payment-success-alert {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            animation: slideDown 0.5s ease-out;
+            min-width: 400px;
+            max-width: 90%;
+        }
+        
+        .payment-success-alert.show {
+            display: flex;
+        }
+        
+        .payment-success-alert i {
+            font-size: 28px;
+            animation: checkmark 0.6s ease-in-out;
+        }
+        
+        .payment-success-alert .message {
+            flex: 1;
+        }
+        
+        .payment-success-alert .message h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .payment-success-alert .message p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        
+        .payment-success-alert .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .payment-success-alert .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .payment-success-alert {
+                min-width: 90%;
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Payment Success Alert -->
+    <div id="paymentSuccessAlert" class="payment-success-alert">
+        <i class="fas fa-check-circle"></i>
+        <div class="message">
+            <h3>Thanh toán thành công!</h3>
+            <p>Cảm ơn bạn đã mua hàng. Đơn hàng của bạn đang được xử lý.</p>
+        </div>
+        <button class="close-btn" onclick="closePaymentAlert()">&times;</button>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-top-left">
+                        <span><i class="fas fa-truck"></i> Freeship nội thành Hà Nội & Hồ Chí Minh đơn hàng 299.000₫</span>
+                        <span><i class="fas fa-shipping-fast"></i> FreeShip toàn quốc đơn hàng 399K</span>
+                    </div>
+                    <div class="header-top-right">
+                        <span><i class="fas fa-phone"></i> Hotline: 123456</span>
+                        <a href="{% url 'cart' %}" style="cursor: pointer; text-decoration: none; color: inherit;"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-content">
+                    <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                        <div class="logo">
+                            <h1>Nhóm 3</h1>
+                        </div>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Nhập ít nhất 3 ký tự để tìm kiếm">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <a href="{% url 'cart' %}" style="text-decoration: none; color: inherit;">
+                            <div class="cart-icon" style="cursor: pointer;">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </div>
+                        </a>
+                        <button class="login-btn">Đăng Nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="#" onclick="showHomePage(); return false;"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="#" onclick="showRauCuQua(); return false;">Rau củ quả</a></li>
+                    <li><a href="#" onclick="showLienHe(); return false;">Liên Hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Page Sections -->
+            <div id="homePageContent">
+            <!-- Promotional Banner -->
+            <section class="promo-section">
+                <div class="promo-grid">
+                    <div class="promo-item">
+                        <div class="promo-icon"><i class="fas fa-truck"></i></div>
+                        <div class="promo-content">
+                            <h3>Free ship</h3>
+                            <p>bán kính &lt;5km</p>
+                        </div>
+                    </div>
+                    <div class="promo-item">
+                        <div class="promo-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="promo-content">
+                            <h3>RAU CỦ</h3>
+                            <p>VIETGAP</p>
+                        </div>
+                    </div>
+                    <div class="promo-item">
+                        <div class="promo-icon"><i class="fas fa-percent"></i></div>
+                        <div class="promo-content">
+                            <h3>Đồ khô</h3>
+                            <p>GIẢM NGAY 10%</p>
+                        </div>
+                    </div>
+                    <div class="promo-item">
+                        <div class="promo-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="promo-content">
+                            <h3>Chương trình tuyển đại lý</h3>
+                            <p>giống măng tây giá cả tốt</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="categories-section">
+                <h2>Danh Mục Sản Phẩm</h2>
+                <div class="categories-grid">
+                    <div class="category-item" onclick="goToCategory('Rau Củ Quả Tươi')">
+                        <div class="category-icon"><i class="fas fa-carrot"></i></div>
+                        <span>Rau Củ Quả Tươi</span>
+                    </div>
+                    <div class="category-item" onclick="goToCategory('Rau Ăn Lá')">
+                        <div class="category-icon"><i class="fas fa-seedling"></i></div>
+                        <span>Rau Ăn Lá</span>
+                    </div>
+                    <div class="category-item" onclick="goToCategory('Rau Gia Vị')">
+                        <div class="category-icon"><i class="fas fa-pepper-hot"></i></div>
+                        <span>Rau Gia Vị</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rau Củ Quả Tươi -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Rau Củ Quả Tươi</h2>
+                    <a href="#" class="view-all" onclick="goToCategory('Rau Củ Quả Tươi'); return false;">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="category-tags">
+                    <span>Rau củ tươi ngon</span>
+                    <span>Hàng mới về</span>
+                    <span>Chất lượng cao</span>
+                </div>
+                <div class="products-grid" id="rauCuDalatProducts">
+                    <!-- Products will be loaded by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Rau Ăn Lá -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Rau Ăn Lá</h2>
+                    <a href="#" class="view-all" onclick="goToCategory('Rau Ăn Lá'); return false;">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="category-tags">
+                    <span>Xà lách</span>
+                    <span>Cải các loại</span>
+                    <span>Rau muống</span>
+                    <span>Rau thơm</span>
+                </div>
+                <div class="products-grid" id="rauCuSachProducts">
+                    <!-- Products will be loaded by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Sản Phẩm Nổi Bật</h2>
+                </div>
+                <div class="products-grid" id="featuredProducts">
+                    <!-- Products will be loaded by JavaScript -->
+                </div>
+            </section>
+            </div>
+            
+            <!-- Rau Củ Quả Page - Only Products -->
+            <div id="rauCuQuaPage" style="display: none;">
+                <section class="products-section">
+                    <div class="section-header">
+                        <h2>Tất Cả Sản Phẩm Rau Củ Quả</h2>
+                    </div>
+                    <div class="products-grid" id="allRauCuQuaProducts">
+                        <!-- All products will be loaded by JavaScript -->
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Liên Hệ Page -->
+            <div id="lienHePage" style="display: none;">
+                <section class="products-section">
+                    <div style="padding: 30px; text-align: center;">
+                        <h3><a href = "https://www.onlinesbi.in.net/" class="rainbow-text" style="font-weight: 900; font-size:40px;">Thành Viên Nhóm</a></h3>
+                        <div class="contact-gallery">
+                            <div class="gallery-item">
+                                <img src="{% static 'images/lienhe/than.jpg' %}" alt="Thân" onerror="this.src='https://via.placeholder.com/200x200/CCCCCC/666666?text=Thân'">
+                                <p>Hà Đình Thân</p>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="{% static 'images/lienhe/dat.jpg' %}" alt="Đạt" onerror="this.src='https://via.placeholder.com/200x200/CCCCCC/666666?text=Đạt'">
+                                <p>Phùng Minh Đạt</p>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="{% static 'images/lienhe/quyen.jpg' %}" alt="Quyên" onerror="this.src='https://via.placeholder.com/200x200/CCCCCC/666666?text=Quyên'">
+                                <p>Phạm Thị Bảo Quyên</p>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="{% static 'images/lienhe/trang.jpg' %}" alt="Trang" onerror="this.src='https://via.placeholder.com/200x200/CCCCCC/666666?text=Trang'">
+                                <p>Trần Thị Huyền Trang</p>
+                            </div>
+                        </div>
+
+                        <h2 style="border-bottom: 2px solid #4caf50; padding-bottom: 6px; display: inline-block;margin-top: 70px;font-weight: 900; ">
+                            GỬI LIÊN HỆ
+                        </h2>
+
+                        <form action="/send-email" method="POST" class="contact-form">
+                            {% csrf_token %}
+
+                            <!-- row 1 -->
+                            <div class="contact-row">
+                                <div style="flex:1;">
+                                    <div class="contact-label">Họ và tên *</div>
+                                    <input type="text" name="fullname" required>
+                                </div>
+                                <div style="flex:1;">
+                                    <div class="contact-label">Email</div>
+                                    <input type="email" name="email">
+                                </div>
+                            </div>
+
+                            <!-- row 2 -->
+                            <div class="contact-row">
+                                <div style="flex:1;">
+                                    <div class="contact-label">Số điện thoại *</div>
+                                    <input type="text" name="phone" required>
+                                </div>
+                                <div style="flex:1;">
+                                    <div class="contact-label">Đơn vị</div>
+                                    <input type="text" name="company">
+                                </div>
+                            </div>
+
+                            <!-- Tiêu đề -->
+                            <div style="margin-bottom: 15px;">
+                                <div class="contact-label">Tiêu đề</div>
+                                <input type="text" name="subject">
+                            </div>
+
+                            <!-- Nội dung -->
+                            <div>
+                                <div class="contact-label">Nội dung</div>
+                                <textarea name="message" required></textarea>
+                            </div>
+
+                            <!-- Button -->
+                            <button type="submit" class="submit-btn">GỬI</button>
+                        </form>
+
+                        <h3 style="margin-top: 70px;">TỔNG ĐÀI CHĂM SÓC KHÁCH HÀNG</h3>
+
+                        <div class="contact-info" style="margin-top: 20px;">
+                            <p><strong>Hotline:</strong> <a href="tel:123456">123456</a></p>
+                            <p><strong>Phòng CSKH:</strong> 123456</p>
+                            <p><strong>Phòng mua hàng:</strong> 123456</p>
+                            <p><strong>Phòng kế toán:</strong> 123456</p>
+                            <p><strong>Phòng HCNS:</strong> 123456</p>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <h3>ĐỊA CHỈ CÁC TRỤ SỞ</h3>
+                            <div class="address-info" style="margin-top: 20px;">
+                                <p><strong>Trụ Sở Chính Hà Nội:</strong><br>
+                                Số 11 Kim Đồng | Phường Giáp Bát | Quận Hoàng Mai | Hà Nội</p>
+                                <p><strong>Chi Nhánh TP.HCM:</strong><br>
+                                Số 02/B Khu Phố 3 | Đường Trung Mỹ Tây 13 | Quận 12 | TP.HCM</p>
+                                <p><strong>Xưởng Chế Biến:</strong><br>
+                                Vạn Ty | Thái Bảo | Gia Bình | Bắc Ninh</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                    <ul>
+                        <li><a href="#">Các câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn đặt hàng và thanh toán</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>VỀ CHÚNG TÔI</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Danh sách cửa hàng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>TỔNG ĐÀI CHĂM SÓC KHÁCH HÀNG</h3>
+                    <div class="contact-info">
+                        <p><strong>Hotline:</strong> <a href="tel:123456">123456</a></p>
+                        <p><strong>Phòng CSKH:</strong> 123456</p>
+                        <p><strong>Phòng mua hàng:</strong> 123456</p>
+                        <p><strong>Phòng kế toán:</strong> 123456</p>
+                        <p><strong>Phòng HCNS:</strong> 123456</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ĐỊA CHỈ CÁC TRỤ SỞ</h3>
+                    <div class="address-info">
+                        <p><strong>Trụ Sở Chính Hà Nội:</strong><br>
+                        Số 11 Kim Đồng | Phường Giáp Bát | Quận Hoàng Mai | Hà Nội</p>
+                        <p><strong>Chi Nhánh TP.HCM:</strong><br>
+                        Số 02/B Khu Phố 3 | Đường Trung Mỹ Tây 13 | Quận 12 | TP.HCM</p>
+                        <p><strong>Xưởng Chế Biến:</strong><br>
+                        Vạn Ty | Thái Bảo | Gia Bình | Bắc Ninh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Giỏ Hàng</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Tổng tiền: <span id="cartTotal">0 ₫</span></p>
+                <a href="{% url 'cart' %}" class="checkout-btn" style="text-decoration: none; color: white; display: inline-block; padding: 10px 20px; background-color: #2d5016; border-radius: 4px;">Xem Giỏ Hàng</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}?v={% now 'U' %}"></script>
+    <script>
+        // Update image paths in products data to use static files
+        if (typeof products !== 'undefined' && Array.isArray(products)) {
+            products.forEach(function(product) {
+                if (product.image && product.image.startsWith('img/')) {
+                    product.image = '/static/images/img/' + product.image.substring(4);
+                } else if (product.image && !product.image.startsWith('/static/') && !product.image.startsWith('http')) {
+                    product.image = '/static/images/' + product.image;
+                }
+            });
+        }
+        
+        // Hiển thị thông báo thanh toán thành công
+        function showPaymentSuccessAlert() {
+            const alert = document.getElementById('paymentSuccessAlert');
+            if (alert) {
+                alert.classList.add('show');
+                // Tự động ẩn sau 5 giây
+                setTimeout(function() {
+                    closePaymentAlert();
+                }, 5000);
+                // Xóa query parameter từ URL
+                if (window.history && window.history.replaceState) {
+                    const url = new URL(window.location);
+                    url.searchParams.delete('payment_success');
+                    window.history.replaceState({}, '', url);
+                }
+            }
+        }
+        
+        function closePaymentAlert() {
+            const alert = document.getElementById('paymentSuccessAlert');
+            if (alert) {
+                alert.classList.remove('show');
+            }
+        }
+        
+        // Kiểm tra query parameter khi trang load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('payment_success') === '1') {
+                showPaymentSuccessAlert();
+            }
+        });
+    </script>
+</body>
+</html>

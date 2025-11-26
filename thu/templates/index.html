@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Form liên hệ</title>
+</head>
+<body>
+
+    <h2>Gửi thông tin liên hệ</h2>
+
+    <form action="/send-email" method="POST" style="display:flex;flex-direction:column;gap:12px;max-width:400px;">
+
+        <input type="text" name="fullname" placeholder="Họ và tên *" required>
+
+        <input type="email" name="email" placeholder="Email">
+
+        <input type="text" name="phone" placeholder="Số điện thoại *" required>
+
+        <input type="text" name="company" placeholder="Đơn vị">
+
+        <input type="text" name="subject" placeholder="Tiêu đề">
+
+        <textarea name="message" placeholder="Nội dung *" rows="5" required></textarea>
+
+        <button type="submit" style="padding:10px;">GỬI</button>
+    </form>
+
+</body>
+</html>
